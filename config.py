@@ -1,4 +1,12 @@
-# Simple configuration for testing ZeroMQ communication
+# Simple configuration for peer discovery
 
-# Raspberry Pi IP address - UPDATE THIS to your Raspberry Pi's actual IP
-GATEWAY_IP = "192.168.144.100"  # Change this to your Raspberry Pi's IP address!
+# All nodes listen on this ZeroMQ port
+NODE_PORT = 5555
+
+# UDP discovery settings (same subnet)
+DISCOVERY_PORT = 50000
+DISCOVERY_BROADCAST = "255.255.255.255"
+DISCOVERY_INTERVAL = 2.0  # seconds between broadcast pings
+
+# Status update interval (seconds)
+STATUS_INTERVAL = 2.0
