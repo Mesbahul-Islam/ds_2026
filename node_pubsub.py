@@ -1,5 +1,5 @@
 """
-Minimal Peer Node - Auto-discovery + status updates
+Minimal Peer Node - Auto-discovery + PUB/SUB status updates
 """
 import json
 import socket
@@ -29,18 +29,25 @@ def get_local_ip():
 NODE_ID = f"{socket.gethostname()}-{uuid.uuid4().hex[:6]}"
 
 
-def server_loop(context):
-    socket = context.socket(zmq.REP)
-    socket.bind(f"tcp://*:{NODE_PORT}")
-
+def subscriber_loop(context, peers_info):
+    sub_socket = context.socket(zmq.SUB)
+    sub_socket.setsockopt_string(zmq.SUBSCRIBE, "")
+    
+    connected_peers = set()
+    
     while True:
         try:
-            socket.recv_json()
-            socket.send_json({"ok": True})
+            for peer_id, info in peers_info.items():
+                if peer_id not in connected_peers:
+                    sub_socket.connect(f"tcp://{info['ip']}:{info['port']}")
+                    connected_peers.add(peer_id)
+                    print(f"[SUB:{NODE_ID}] Subscribed to {peer_id} at {info['ip']}:{info['port']}")
+            
+            if sub_socket.poll(1000):
+                message = sub_socket.recv_json()
+                print(f"[SUB:{NODE_ID}] Received: {message}")
         except Exception:
-            continue
-
-    socket.close()
+            pass
 
 
 def discovery_loop(stop_event, peers_info):
@@ -63,11 +70,10 @@ def discovery_loop(stop_event, peers_info):
                 ).encode("utf-8"),
                 (DISCOVERY_BROADCAST, DISCOVERY_PORT),
             )
-            print(f"[Discovery:{NODE_ID}] Broadcasted discovery message")
 
             data, addr = sock.recvfrom(4096)
             message = json.loads(data.decode("utf-8"))
-            
+
             if message.get("node_id") != NODE_ID and message.get("type") in {"discover", "announce"}:
                 peer_id = message.get("node_id")
                 if peer_id:
@@ -85,9 +91,9 @@ def discovery_loop(stop_event, peers_info):
                                 "port": NODE_PORT,
                             }).encode("utf-8"), (addr[0], DISCOVERY_PORT)
                         )
-                        print(f"[Discovery:{NODE_ID}] Sent announce message to {addr[0]}:{DISCOVERY_PORT}")
         except Exception:
             pass
+
         if peers_info:
             print(f"[Discovery:{NODE_ID}] Known peers: {list(peers_info.keys())}")
         time.sleep(15 if peers_info else 2)
@@ -101,9 +107,15 @@ def main():
     peers_info = {}
     stop_event = threading.Event()
 
-    # Start server thread to receive messages
-    server_thread = threading.Thread(target=server_loop, args=(context,), daemon=True)
-    server_thread.start()
+    # PUB socket - publish status updates
+    pub_socket = context.socket(zmq.PUB)
+    pub_socket.bind(f"tcp://*:{NODE_PORT}")
+
+    # Start subscriber thread
+    sub_thread = threading.Thread(
+        target=subscriber_loop, args=(context, peers_info), daemon=True
+    )
+    sub_thread.start()
 
     # Start discovery thread
     discovery_thread = threading.Thread(
@@ -111,24 +123,10 @@ def main():
     )
     discovery_thread.start()
 
-    peer_sockets = {}
-
     try:
         time.sleep(2)
 
         while True:
-            for peer_id, info in peers_info.items():
-                if peer_id not in peer_sockets:
-                    sock = context.socket(zmq.REQ)
-                    sock.setsockopt(zmq.RCVTIMEO, 1000)
-                    sock.setsockopt(zmq.SNDTIMEO, 1000)
-                    sock.setsockopt(zmq.LINGER, 0)
-                    sock.connect(f"tcp://{info['ip']}:{info['port']}")
-                    peer_sockets[peer_id] = sock
-                    print(
-                        f"[Client:{NODE_ID}] Connected to {peer_id} at {info['ip']}:{info['port']}"
-                    )
-
             status = {
                 "node_id": NODE_ID,
                 "ip": get_local_ip(),
@@ -136,12 +134,8 @@ def main():
                 "ts": datetime.now().isoformat(),
             }
 
-            for sock in peer_sockets.values():
-                try:
-                    sock.send_json({"status": status})
-                    sock.recv_json()
-                except Exception:
-                    pass
+            pub_socket.send_json(status)
+            print(f"[PUB:{NODE_ID}] Published: {status}")
 
             time.sleep(2)
 
@@ -149,8 +143,7 @@ def main():
         pass
     finally:
         stop_event.set()
-        for sock in peer_sockets.values():
-            sock.close()
+        pub_socket.close()
         context.term()
 
 
