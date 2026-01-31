@@ -1,11 +1,4 @@
 # Simple configuration for testing ZeroMQ communication
 
-# Gateway IP address - change this to your gateway Raspberry Pi's IP
-GATEWAY_IP = "192.168.1.100"  # Update this!
-
-# Ports for communication
-TASK_PORT = 5555    # Gateway sends tasks here
-RESULT_PORT = 5556  # Gateway receives results here
-
-# Edge device IDs
-EDGE_DEVICES = ["edge_1", "edge_2", "edge_3"]
+# Raspberry Pi IP address - UPDATE THIS to your Raspberry Pi's actual IP
+GATEWAY_IP = "192.168.144.100"  # Change this to your Raspberry Pi's IP address!
