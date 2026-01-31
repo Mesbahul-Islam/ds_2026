@@ -63,37 +63,32 @@ def discovery_loop(stop_event, peers_info):
                 ).encode("utf-8"),
                 (DISCOVERY_BROADCAST, DISCOVERY_PORT),
             )
+            print(f"[Discovery:{NODE_ID}] Broadcasted discovery message")
 
             data, addr = sock.recvfrom(4096)
             message = json.loads(data.decode("utf-8"))
+            
+            if message.get("node_id") != NODE_ID and message.get("type") in {"discover", "announce"}:
+                peer_id = message.get("node_id")
+                if peer_id:
+                    peers_info[peer_id] = {
+                        "ip": message.get("ip") or addr[0],
+                        "port": message.get("port", NODE_PORT),
+                    }
+
+                    if message.get("type") == "discover":
+                        sock.sendto(
+                            json.dumps({
+                                "type": "announce",
+                                "node_id": NODE_ID,
+                                "ip": get_local_ip(),
+                                "port": NODE_PORT,
+                            }).encode("utf-8"), (addr[0], DISCOVERY_PORT)
+                        )
+                        print(f"[Discovery:{NODE_ID}] Sent announce message to {addr[0]}:{DISCOVERY_PORT}")
         except Exception:
-            time.sleep(2)
-            continue
-
-        if message.get("node_id") == NODE_ID:
-            continue
-
-        if message.get("type") in {"discover", "announce"}:
-            peer_id = message.get("node_id")
-            if not peer_id:
-                continue
-
-            peers_info[peer_id] = {
-                "ip": message.get("ip") or addr[0],
-                "port": message.get("port", NODE_PORT),
-            }
-
-            if message.get("type") == "discover":
-                announce = {
-                    "type": "announce",
-                    "node_id": NODE_ID,
-                    "ip": get_local_ip(),
-                    "port": NODE_PORT,
-                }
-                sock.sendto(
-                    json.dumps(announce).encode("utf-8"), (addr[0], DISCOVERY_PORT)
-                )
-
+            pass
+        
         time.sleep(2)
 
     sock.close()
@@ -121,7 +116,7 @@ def main():
         time.sleep(2)
 
         while True:
-            for peer_id, info in dict(peers_info).items():
+            for peer_id, info in peers_info.items():
                 if peer_id not in peer_sockets:
                     sock = context.socket(zmq.REQ)
                     sock.setsockopt(zmq.RCVTIMEO, 1000)
@@ -145,7 +140,7 @@ def main():
                     sock.send_json({"status": status})
                     sock.recv_json()
                 except Exception:
-                    continue
+                    pass
 
             time.sleep(2)
 
