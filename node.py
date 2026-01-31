@@ -38,7 +38,7 @@ def server_loop(context):
             socket.recv_json()
             socket.send_json({"ok": True})
         except Exception:
-            break
+            continue
 
     socket.close()
 
@@ -124,6 +124,9 @@ def main():
             for peer_id, info in dict(peers_info).items():
                 if peer_id not in peer_sockets:
                     sock = context.socket(zmq.REQ)
+                    sock.setsockopt(zmq.RCVTIMEO, 1000)
+                    sock.setsockopt(zmq.SNDTIMEO, 1000)
+                    sock.setsockopt(zmq.LINGER, 0)
                     sock.connect(f"tcp://{info['ip']}:{info['port']}")
                     peer_sockets[peer_id] = sock
                     print(
@@ -138,8 +141,11 @@ def main():
             }
 
             for sock in peer_sockets.values():
-                sock.send_json({"status": status})
-                sock.recv_json()
+                try:
+                    sock.send_json({"status": status})
+                    sock.recv_json()
+                except Exception:
+                    continue
 
             time.sleep(2)
 
