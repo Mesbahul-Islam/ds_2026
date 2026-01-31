@@ -12,10 +12,8 @@ import zmq
 
 from config import (
     DISCOVERY_BROADCAST,
-    DISCOVERY_INTERVAL,
     DISCOVERY_PORT,
     NODE_PORT,
-    STATUS_INTERVAL,
 )
 
 
@@ -69,7 +67,7 @@ def discovery_loop(stop_event, peers_info):
             data, addr = sock.recvfrom(4096)
             message = json.loads(data.decode("utf-8"))
         except Exception:
-            time.sleep(DISCOVERY_INTERVAL)
+            time.sleep(2)
             continue
 
         if message.get("node_id") == NODE_ID:
@@ -96,7 +94,7 @@ def discovery_loop(stop_event, peers_info):
                     json.dumps(announce).encode("utf-8"), (addr[0], DISCOVERY_PORT)
                 )
 
-        time.sleep(DISCOVERY_INTERVAL)
+        time.sleep(2)
 
     sock.close()
 
@@ -143,7 +141,7 @@ def main():
                 sock.send_json({"status": status})
                 sock.recv_json()
 
-            time.sleep(STATUS_INTERVAL)
+            time.sleep(2)
 
     except Exception:
         pass
