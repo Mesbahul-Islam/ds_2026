@@ -40,7 +40,7 @@ def base64_to_image(base64_data, output_path):
         img_file.write(base64.b64decode(base64_data))
 
 
-def subscriber_loop(context, peers_info, output_dir="received_images"):
+def subscriber_loop(context, peers_info, stop_event, output_dir="received_images"):
     """Subscribe to and receive images from peers"""
     sub_socket = context.socket(zmq.SUB)
     sub_socket.setsockopt_string(zmq.SUBSCRIBE, "")
@@ -51,7 +51,7 @@ def subscriber_loop(context, peers_info, output_dir="received_images"):
     connected_peers = set()
     image_count = 0
     
-    while True:
+    while not stop_event.is_set():
         try:
             for peer_id, info in peers_info.items():
                 if peer_id not in connected_peers:
@@ -67,6 +67,15 @@ def subscriber_loop(context, peers_info, output_dir="received_images"):
                     image_data = message.get("image_data")
                     sender = message.get("node_id")
                     size = message.get("size")
+                    publish_ts = message.get("publish_ts") or message.get("ts")  # Fallback for compatibility
+                    
+                    # Calculate delay
+                    receive_time = datetime.now()
+                    if publish_ts:
+                        publish_time = datetime.fromisoformat(publish_ts)
+                        delay_ms = (receive_time - publish_time).total_seconds() * 1000
+                    else:
+                        delay_ms = 0
                     
                     # Save received image with sender info in filename
                     output_path = os.path.join(output_dir, f"{sender}_{filename}")
@@ -75,11 +84,19 @@ def subscriber_loop(context, peers_info, output_dir="received_images"):
                     
                     print(f"\n✓ Received image #{image_count}: {filename}")
                     print(f"  From: {sender} | Size: {size} bytes")
-                    print(f"  Saved: {output_path}\n")
+                    print(f"  Published: {publish_ts}")
+                    print(f"  Received:  {receive_time.isoformat()}")
+                    print(f"  Delay:     {delay_ms:.2f} ms")
+                    print(f"  Saved:     {output_path}\n")
                     
+        except zmq.error.ContextTerminated:
+            break
         except Exception as e:
-            print(f"[SUB:{NODE_ID}] Error: {e}")
+            if not stop_event.is_set():
+                print(f"[SUB:{NODE_ID}] Error: {e}")
             connected_peers.clear()  # Reconnect on error
+    
+    sub_socket.close()
 
 
 def discovery_loop(stop_event, peers_info):
@@ -145,7 +162,7 @@ def main():
 
     # Start subscriber thread
     sub_thread = threading.Thread(
-        target=subscriber_loop, args=(context, peers_info), daemon=True
+        target=subscriber_loop, args=(context, peers_info, stop_event), daemon=True
     )
     sub_thread.start()
 

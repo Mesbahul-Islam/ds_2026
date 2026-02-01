@@ -58,61 +58,23 @@ def publish_image(pub_socket, image_path, node_id):
         # Convert image to base64
         image_data = image_to_base64(image_path)
         
-        # Create message with metadata
+        # Create message with metadata including publish timestamp
         message = {
             "type": "image",
             "node_id": node_id,
             "filename": filename,
             "size": file_size,
             "image_data": image_data,
-            "ts": datetime.now().isoformat(),
+            "publish_ts": datetime.now().isoformat(),
+            "ts": datetime.now().isoformat(),  # Keep for compatibility
         }
         
         # Send via PUB socket
         pub_socket.send_json(message)
-        print(f"[PUB:{node_id}] Published: {filename} via ZeroMQ")
+        print(f"[PUB:{node_id}] Published: {filename} at {message['publish_ts']}")
         
     except Exception as e:
         print(f"[PUB:{node_id}] Error publishing image: {e}")
-
-
-def subscriber_loop(context, peers_info, output_dir="received_images"):
-    """Subscribe to image messages from peers"""
-    sub_socket = context.socket(zmq.SUB)
-    sub_socket.setsockopt_string(zmq.SUBSCRIBE, "")
-    
-    # Create output directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
-    
-    connected_peers = set()
-    
-    while True:
-        try:
-            for peer_id, info in peers_info.items():
-                if peer_id not in connected_peers:
-                    sub_socket.connect(f"tcp://{info['ip']}:{info['port']}")
-                    connected_peers.add(peer_id)
-                    print(f"[SUB:{NODE_ID}] Subscribed to {peer_id} at {info['ip']}:{info['port']}")
-            
-            if sub_socket.poll(1000):
-                message = sub_socket.recv_json()
-                
-                if message.get("type") == "image":
-                    filename = message.get("filename")
-                    image_data = message.get("image_data")
-                    sender = message.get("node_id")
-                    
-                    # Save received image
-                    output_path = os.path.join(output_dir, f"{sender}_{filename}")
-                    base64_to_image(image_data, output_path)
-                    
-                    print(f"[SUB:{NODE_ID}] Received image: {filename} from {sender}")
-                    print(f"[SUB:{NODE_ID}] Saved to: {output_path}")
-                else:
-                    print(f"[SUB:{NODE_ID}] Received: {message}")
-                    
-        except Exception as e:
-            print(f"[SUB:{NODE_ID}] Error: {e}")
 
 
 def discovery_loop(stop_event, peers_info):
@@ -181,12 +143,6 @@ def main():
     print(f"[PUB:{NODE_ID}] Listening on tcp://*:{NODE_PORT}")
     print(f"[PUB:{NODE_ID}] Local IP: {get_local_ip()}\n")
 
-    # Start subscriber thread
-    sub_thread = threading.Thread(
-        target=subscriber_loop, args=(context, peers_info), daemon=True
-    )
-    sub_thread.start()
-
     # Start discovery thread
     discovery_thread = threading.Thread(
         target=discovery_loop, args=(stop_event, peers_info), daemon=True
@@ -201,21 +157,16 @@ def main():
         test_image = "img.jpg"
         
         if os.path.exists(test_image):
-            print(f"[PUB:{NODE_ID}] Found image: {test_image}\n")
-            counter = 0
+            print(f"[PUB:{NODE_ID}] Found image: {test_image}")
+            print(f"[PUB:{NODE_ID}] Starting infinite publishing loop...\n")
+            
             while True:
                 publish_image(pub_socket, test_image, NODE_ID)
-                time.sleep(10)
-                counter += 1
-                
-                if counter >= 5:  # Publish 5 times then stop
-                    break
+                time.sleep(2)
         else:
             print(f"[PUB:{NODE_ID}] Image '{test_image}' not found in current directory.")
-            print(f"[PUB:{NODE_ID}] Starting in subscriber-only mode...")
-            print(f"[PUB:{NODE_ID}] Waiting for images from peers...\n")
-            while True:
-                time.sleep(1)
+            print(f"[PUB:{NODE_ID}] Exiting...")
+            return
 
     except KeyboardInterrupt:
         print("\n[INFO] Shutting down...")
