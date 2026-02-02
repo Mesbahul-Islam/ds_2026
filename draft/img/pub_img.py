@@ -22,7 +22,6 @@ from config import (
     NODE_PORT,
 )
 
-
 def get_local_ip():
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
@@ -32,20 +31,20 @@ def get_local_ip():
         return "127.0.0.1"
 
 
-NODE_ID = f"{socket.gethostname()}-{uuid.uuid4().hex[:6]}"
+# NODE_ID = f"{socket.gethostname()}-{uuid.uuid4().hex[:6]}"
+NODE_ID = f"{socket.gethostname()}"
 
+IMG_PATH = "/home/pi/ds_2026/draft/img/bus.jpg"
 
 def image_to_base64(image_path):
     """Convert image file to base64 string"""
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode("utf-8")
 
-
 def base64_to_image(base64_data, output_path):
     """Convert base64 string back to image file"""
     with open(output_path, "wb") as img_file:
         img_file.write(base64.b64decode(base64_data))
-
 
 def publish_image(pub_socket, image_path, node_id):
     """Publish an image through ZeroMQ"""
@@ -75,7 +74,6 @@ def publish_image(pub_socket, image_path, node_id):
         
     except Exception as e:
         print(f"[PUB:{node_id}] Error publishing image: {e}")
-
 
 def discovery_loop(stop_event, peers_info):
     """Discover peers on the network"""
@@ -154,7 +152,7 @@ def main():
         
         # Example: Publish an image every 10 seconds
         # Replace with your actual image path
-        test_image = "img.jpg"
+        test_image = IMG_PATH
         
         if os.path.exists(test_image):
             print(f"[PUB:{NODE_ID}] Found image: {test_image}")

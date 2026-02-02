@@ -1,0 +1,16 @@
+Build a distributed 5G IoT gateway that aggregates and processes sensor data from thousands of IoT devices. 
+Incorporate Edge ML\LLM to make real-time predictions (e.g., anomaly detection) close to the source.
+
+Key Increments (6-Week Outline): 
+1. Introduction: Simple IoT gateway collecting sensor data, storing it in a single node.
+2. Communication: Add MQTT or CoAP for device-to-gateway communication; REST/gRPC for gateway-to-cloud.
+3. Time & Consensus: Coordinate edge nodes with consistent configuration (e.g., over-the-air updates).
+4. Performance & Scalability: Load balancing for incoming IoT data streams and auto-scale gateways.
+5. Replication & Consistency: Edge gateway cluster replicates sensor data with eventual consistency.
+6. Resource Scheduling: Distribute ML inference tasks among edge gateways and central cloud.
+7. System Architecture:  Microservices for device management, data ingestion, ML inference, and coordination.
+8. Middleware: Manage authentication, device provisioning, and logging in one layer.
+9. Datacenter & Cloud: Run batch analytics and heavier ML training in a telco cloud environment.
+10. Big Data Processing: Implement MapReduce/Spark to handle large historical sensor datasets.
+11. Distributed ML:  Real-time anomaly detection model at the edge, updated from cloud training.
+12. Edge–Cloud Continuum: Adaptive scheduling so immediate analytics run at the edge, while deeper insights come from the cloud.
