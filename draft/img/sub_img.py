@@ -13,7 +13,7 @@ import base64
 import zmq
 
 # Add parent directory to path to import config
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from config import (
     DISCOVERY_BROADCAST,

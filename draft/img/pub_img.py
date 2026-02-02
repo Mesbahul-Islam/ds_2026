@@ -14,7 +14,7 @@ import base64
 import zmq
 
 # Add parent directory to path to import config
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from config import (
     DISCOVERY_BROADCAST,
@@ -34,7 +34,7 @@ def get_local_ip():
 # NODE_ID = f"{socket.gethostname()}-{uuid.uuid4().hex[:6]}"
 NODE_ID = f"{socket.gethostname()}"
 
-IMG_PATH = "/home/pi/ds_2026/draft/img/bus.jpg"
+IMG_PATH = os.path.join(os.path.dirname(__file__), "bus.jpg")
 
 def image_to_base64(image_path):
     """Convert image file to base64 string"""
