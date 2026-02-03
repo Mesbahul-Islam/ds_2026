@@ -31,7 +31,7 @@ def get_local_ip():
         return "127.0.0.1"
 
 
-NODE_ID = f"{socket.gethostname()}-{uuid.uuid4().hex[:6]}"
+NODE_ID = f"{socket.gethostname()}"
 
 
 def base64_to_image(base64_data, output_path):

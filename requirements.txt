@@ -1,4 +1,4 @@
 pyzmq
-ultralytics[export]
+ultralytics
 opencv-python
 Pillow
