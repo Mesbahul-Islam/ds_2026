@@ -2,3 +2,4 @@ pyzmq
 ultralytics
 opencv-python
 Pillow
+ffmpeg-python
