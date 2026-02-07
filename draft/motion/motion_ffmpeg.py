@@ -10,6 +10,7 @@ import numpy as np
 import cv2
 import time
 import zmq
+from datetime import datetime
 
 # Add parent directory to path to import config
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -164,7 +165,7 @@ try:
                     "type": "motion_flag",
                     "node_id": NODE_ID,
                     "flag": 1,
-                    "ts": time.time(),
+                    "ts": datetime.now().isoformat(),
                 })
                 print("Motion detected: sent flag 1 with image")
 
@@ -179,8 +180,8 @@ try:
                     "filename": "motion.jpg",
                     "size": len(image_bytes),
                     "image_data": image_b64,
-                    "publish_ts": time.time(),
-                    "ts": time.time(),
+                    "publish_ts": datetime.now().isoformat(),
+                    "ts": datetime.now().isoformat(),
                 }
                 pub_socket.send_json(message)
             else:
@@ -191,7 +192,7 @@ try:
                 "type": "motion_flag",
                 "node_id": NODE_ID,
                 "flag": 0,
-                "ts": time.time(),
+                "ts": datetime.now().isoformat(),
             })
             print("Motion ended: sent flag 0")
         

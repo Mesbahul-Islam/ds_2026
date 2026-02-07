@@ -10,3 +10,4 @@ DISCOVERY_INTERVAL = 2  # seconds between broadcast pings
 
 # Status update interval (seconds)
 STATUS_INTERVAL = 2
+    

@@ -67,6 +67,8 @@ def subscriber_loop(context, peers_info, stop_event, output_dir="received_images
                 if message.get("type") == "image":
                     image_b64 = message.get("image_data")
                     sender = message.get("node_id", "unknown")
+                    publish_ts_str = message.get("publish_ts")
+                    
                     if image_b64:
                         jpeg_bytes = base64.b64decode(image_b64)
                         filename = f"{sender}_motion_{receive_time.strftime('%Y%m%d_%H%M%S_%f')}.jpg"
@@ -74,10 +76,23 @@ def subscriber_loop(context, peers_info, stop_event, output_dir="received_images
                         save_jpeg_bytes(jpeg_bytes, output_path)
                         image_count += 1
 
+                        # Calculate latency if publish timestamp is available
+                        latency_info = ""
+                        if publish_ts_str:
+                            try:
+                                publish_time = datetime.fromisoformat(publish_ts_str)
+                                latency = (receive_time - publish_time).total_seconds() * 1000  # in milliseconds
+                                latency_info = f"  Latency:  {latency:.2f} ms"
+                            except (ValueError, TypeError):
+                                latency_info = "  Latency:  N/A"
+
                         print(f"\n✓ Motion image #{image_count}")
                         print(f"  From:     {sender}")
                         print(f"  Received: {receive_time.isoformat()}")
-                        print(f"  Saved:    {output_path}\n")
+                        print(f"  Saved:    {output_path}")
+                        if latency_info:
+                            print(latency_info)
+                        print()
                 elif message.get("type") == "motion_flag":
                     flag = message.get("flag")
                     if flag == 1:
