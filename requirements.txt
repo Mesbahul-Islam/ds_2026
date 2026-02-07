@@ -3,3 +3,4 @@ ultralytics
 opencv-python
 Pillow
 ffmpeg-python
+psutil
