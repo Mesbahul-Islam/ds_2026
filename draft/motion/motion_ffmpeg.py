@@ -22,8 +22,8 @@ from config import (
 
 # Constants
 url = 'rtsp://192.168.144.25:8554/main.264' #'rtsp://192.168.0.181:8554/stream'
-motion_threshold = 0.2  # Fraction of pixels that must change to trigger motion
-pixel_diff_threshold = 25  # Minimum pixel difference to count as change
+motion_threshold = 0.33  # Fraction of pixels that must change to trigger motion
+pixel_diff_threshold = 50  # Minimum pixel difference to count as change
 blur_sigma = 1.5  # Sigma for Gaussian blur to reduce noise
 kernel_size = 5
 MOTION_PORT = 5555
@@ -127,20 +127,21 @@ height = int(video_info['height'])
 
 process = (ffmpeg
     .input(url, rtsp_transport='udp')
-    # .filter('fps', fps=1)  # Limit to 1 FPS for processing
-    .output('pipe:', format='rawvideo', pix_fmt='gray8')
+    .filter('fps', fps=10)  # Limit to 10 FPS for processing
+    .output('pipe:', format='rawvideo', pix_fmt='bgr24')
     .global_args('-loglevel', 'quiet')
     .run_async(pipe_stdout=True))
 
-bytes_per_frame = width * height
+bytes_per_frame = width * height * 3
 prev_blurred_frame = None
 last_motion_state = 0
+
 
 print("Starting motion detection... Press Ctrl+C to stop.")
 
 try:
     while True:
-        start_time = time.perf_counter()
+        # start_time = time.perf_counter()
         
         in_bytes = process.stdout.read(bytes_per_frame)
         
@@ -148,28 +149,28 @@ try:
             print("Incomplete frame received. Try again...")
             break
         
-        frame = np.frombuffer(in_bytes, np.uint8).reshape((height, width))
+        frame = np.frombuffer(in_bytes, np.uint8).reshape((height, width, 3))
+
+        frame_gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
         
-        blurred_frame = gaussian_blur(frame, kernel_size, blur_sigma)
+        blurred_frame = gaussian_blur(frame_gray, kernel_size, blur_sigma)
         
         change_ratio = detect_motion(prev_blurred_frame, blurred_frame, pixel_diff_threshold)
         
-        end_time = time.perf_counter()
-        latency = (end_time - start_time) * 1000  # Convert to milliseconds
+        # end_time = time.perf_counter()
+        # latency = (end_time - start_time) * 1000  # Convert to milliseconds
         
         motion_detected = change_ratio is not None and change_ratio > motion_threshold
 
-        if motion_detected:
-            if last_motion_state == 0:
-                pub_socket.send_json({
-                    "type": "motion_flag",
-                    "node_id": NODE_ID,
-                    "flag": 1,
-                    "ts": datetime.now().isoformat(),
-                })
-                print("Motion detected: sent flag 1 with image")
+        if motion_detected and last_motion_state == 0:
+            pub_socket.send_json({
+                "type": "motion_flag",
+                "node_id": NODE_ID,
+                "flag": 1,
+                "ts": datetime.now().isoformat(),
+            })
 
-            # Encode frame as JPEG
+            # Encode a single frame as JPEG on motion start
             success, encoded_img = cv2.imencode('.jpg', frame)
             if success:
                 image_bytes = encoded_img.tobytes()
@@ -184,6 +185,7 @@ try:
                     "ts": datetime.now().isoformat(),
                 }
                 pub_socket.send_json(message)
+                print(f"Motion detected: sent flag 1 and image with motion_ratio {change_ratio:.2f}")
             else:
                 print("Failed to encode image")
         elif last_motion_state == 1:
@@ -195,9 +197,11 @@ try:
                 "ts": datetime.now().isoformat(),
             })
             print("Motion ended: sent flag 0")
-        
         prev_blurred_frame = blurred_frame
         last_motion_state = 1 if motion_detected else 0
+
+        if change_ratio is not None:
+            print(f"Motion ratio: {change_ratio:.4f} - {'DETECTED' if motion_detected else 'No motion'}")
 
 except KeyboardInterrupt:
     print("Stopping motion detection.")
