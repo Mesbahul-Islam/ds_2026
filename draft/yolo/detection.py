@@ -39,7 +39,7 @@ def save_results(results, model, txt_file='detection_results.txt', img_file='det
     print(f"Results saved to {txt_file} and {img_file}")
 
 if __name__ == "__main__":
-    # model_path = os.path.join(os.path.dirname(__file__), 'yolo26n.pt') # PyTorch model
+    #model_path = os.path.join(os.path.dirname(__file__), 'yolo26n.pt') # PyTorch model
     model_path = os.path.join(os.path.dirname(__file__), 'yolo26n_ncnn_model') # NCNN model
 
     model = load_model(model_path)
