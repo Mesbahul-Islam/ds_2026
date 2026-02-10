@@ -10,24 +10,42 @@ import numpy as np
 import cv2
 import time
 import zmq
+import logging
 from datetime import datetime
 
 # Add parent directory to path to import config
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+import sys
+sys.path.append('../..')
 
 from config import (
     DISCOVERY_BROADCAST,
     DISCOVERY_PORT,
+    NODE_PORT,
+    DISCOVERY_INTERVAL,
+    STATUS_INTERVAL,
 )
 
+# Configure logging
+logging.basicConfig(
+    filename='motion.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(message)s'
+)
+# Add console handler
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
+
 # Constants
-url = 'rtsp://192.168.144.25:8554/main.264' #'rtsp://192.168.0.181:8554/stream'
+url = 'rtsp://192.168.144.25:8554/main.264' # SIYI A8 Camera
+url = 'rtsp://192.168.0.200:8554/stream' #Macbook Webcam
 motion_threshold = 0.33  # Fraction of pixels that must change to trigger motion
 pixel_diff_threshold = 50  # Minimum pixel difference to count as change
 blur_sigma = 1.5  # Sigma for Gaussian blur to reduce noise
 kernel_size = 5
-MOTION_PORT = 5555
-NODE_ID = f"{socket.gethostname()}-motion-{uuid.uuid4().hex[:6]}"
+NODE_ID = f"{socket.gethostname()}-motion"
 
 def get_local_ip():
     try:
@@ -68,7 +86,7 @@ def discovery_loop(stop_event, peers_info):
                         "type": "discover",
                         "node_id": NODE_ID,
                         "ip": get_local_ip(),
-                        "port": MOTION_PORT,
+                        "port": NODE_PORT,
                     }
                 ).encode("utf-8"),
                 (DISCOVERY_BROADCAST, DISCOVERY_PORT),
@@ -82,7 +100,7 @@ def discovery_loop(stop_event, peers_info):
                 if peer_id:
                     peers_info[peer_id] = {
                         "ip": message.get("ip") or addr[0],
-                        "port": message.get("port", MOTION_PORT),
+                        "port": message.get("port", NODE_PORT),
                     }
 
                     if message.get("type") == "discover":
@@ -91,7 +109,7 @@ def discovery_loop(stop_event, peers_info):
                                 "type": "announce",
                                 "node_id": NODE_ID,
                                 "ip": get_local_ip(),
-                                "port": MOTION_PORT,
+                                "port": NODE_PORT,
                             }).encode("utf-8"), (addr[0], DISCOVERY_PORT)
                         )
         except Exception:
@@ -107,7 +125,7 @@ def discovery_loop(stop_event, peers_info):
 # ZeroMQ setup
 context = zmq.Context()
 pub_socket = context.socket(zmq.PUB)
-pub_socket.bind(f"tcp://*:{MOTION_PORT}")
+pub_socket.bind(f"tcp://*:{NODE_PORT}")
 peers_info = {}
 stop_event = threading.Event()
 
@@ -116,8 +134,8 @@ discovery_thread = threading.Thread(
 )
 discovery_thread.start()
 
-print(f"[PUB:{NODE_ID}] Listening on tcp://*:{MOTION_PORT}")
-print(f"[PUB:{NODE_ID}] Local IP: {get_local_ip()}\n")
+logging.info(f"[PUB:{NODE_ID}] Listening on tcp://*:{NODE_PORT}")
+logging.info(f"[PUB:{NODE_ID}] Local IP: {get_local_ip()}")
 
 # Main setup
 probe = ffmpeg.probe(url)
@@ -137,7 +155,7 @@ prev_blurred_frame = None
 last_motion_state = 0
 
 
-print("Starting motion detection... Press Ctrl+C to stop.")
+logging.info("Starting motion detection... Press Ctrl+C to stop.")
 
 try:
     while True:
@@ -146,7 +164,7 @@ try:
         in_bytes = process.stdout.read(bytes_per_frame)
         
         if len(in_bytes) != bytes_per_frame:
-            print("Incomplete frame received. Try again...")
+            logging.warning("Incomplete frame received. Try again...")
             break
         
         frame = np.frombuffer(in_bytes, np.uint8).reshape((height, width, 3))
@@ -175,19 +193,20 @@ try:
             if success:
                 image_bytes = encoded_img.tobytes()
                 image_b64 = base64.b64encode(image_bytes).decode("ascii")
+                image_size_kb = len(image_bytes) / 1024
+                ts = datetime.now().isoformat()
                 message = {
                     "type": "image",
                     "node_id": NODE_ID,
                     "filename": "motion.jpg",
-                    "size": len(image_bytes),
+                    "size": f"{image_size_kb:.2f} KB",
                     "image_data": image_b64,
-                    "publish_ts": datetime.now().isoformat(),
-                    "ts": datetime.now().isoformat(),
+                    "ts": ts,
                 }
                 pub_socket.send_json(message)
-                print(f"Motion detected: sent flag 1 and image with motion_ratio {change_ratio:.2f}")
+                logging.info(f"{NODE_ID} detected motion at {ts}: sent flag 1 and image ({image_size_kb:.2f} KB)")
             else:
-                print("Failed to encode image")
+                logging.error("Failed to encode image")
         elif last_motion_state == 1:
             # Send a single 0 when motion ends to avoid repeated traffic
             pub_socket.send_json({
@@ -204,7 +223,7 @@ try:
             print(f"Motion ratio: {change_ratio:.4f} - {'DETECTED' if motion_detected else 'No motion'}")
 
 except KeyboardInterrupt:
-    print("Stopping motion detection.")
+    logging.info("User Stopped motion detection with ctrl+c.")
 finally:
     stop_event.set()
     process.terminate()
