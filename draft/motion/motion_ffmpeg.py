@@ -37,7 +37,7 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 
 # Constants
-url = 'rtsp://192.168.144.25:8554/main.264' # SIYI A8 Camera
+# url = 'rtsp://192.168.144.25:8554/main.264' # SIYI A8 Camera
 url = 'rtsp://192.168.0.200:8554/stream' #Macbook Webcam
 motion_threshold = 0.33  # Fraction of pixels that must change to trigger motion
 pixel_diff_threshold = 50  # Minimum pixel difference to count as change
@@ -67,7 +67,6 @@ def detect_motion(prev_frame, current_frame, pixel_diff_threshold):
     change_ratio = np.mean(changed_pixels)
     
     return change_ratio
-
 
 def discovery_loop(stop_event, peers_info):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -143,7 +142,7 @@ height = int(video_info['height'])
 
 process = (ffmpeg
     .input(url, rtsp_transport='udp')
-    .filter('fps', fps=10)  # Limit to 10 FPS for processing
+    .filter('fps', fps=1)  # Limit to 10 FPS for processing
     .output('pipe:', format='rawvideo', pix_fmt='bgr24')
     .global_args('-loglevel', 'quiet')
     .run_async(pipe_stdout=True))
@@ -192,7 +191,7 @@ try:
                 image_bytes = encoded_img.tobytes()
                 image_b64 = base64.b64encode(image_bytes).decode("ascii")
                 image_size_kb = len(image_bytes) / 1024
-                ts = datetime.now().isoformat()
+                ts = datetime.now().time().isoformat()
                 message = {
                     "type": "image",
                     "node_id": NODE_ID,
@@ -202,7 +201,7 @@ try:
                     "ts": ts,
                 }
                 pub_socket.send_json(message)
-                logging.info(f"{NODE_ID} detected motion at {ts}: sent flag 1 and image ({image_size_kb:.2f} KB)")
+                logging.info(f"{NODE_ID} triggered motion event at {ts} and published image ({image_size_kb:.2f} KB)")
             else:
                 logging.error("Failed to encode image")
         elif last_motion_state == 1:

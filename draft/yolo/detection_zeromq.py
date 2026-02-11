@@ -188,7 +188,7 @@ def subscriber_loop(context, peers_info, stop_event, model, output_dir):
                 
                 send_ts = message.get("ts", "unknown")
                 logging.info(f"Image from {sender} - Send TS: {send_ts} - Recv TS: {recv_ts} - Detect TS: {detection_ts} - Results: {', '.join(detections) if detections else 'No detections'}")
-
+                # logging.info(f"{NODE_ID} received image @ {recv_ts} from {sender} @ {send_ts}; completed decoding @ {}, detection @ {detection_ts} with results: {', '.join(detections) if detections else 'No detections'}")
         except zmq.error.ContextTerminated:
             break
         except Exception as e:
@@ -199,7 +199,8 @@ def subscriber_loop(context, peers_info, stop_event, model, output_dir):
     sub_socket.close()
 
 if __name__ == "__main__":
-    model_path = os.path.join(os.path.dirname(__file__), "yolo26n_ncnn_model")
+    # model_path = os.path.join(os.path.dirname(__file__), "yolo26n_ncnn_model")
+    model_path = os.path.join(os.path.dirname(__file__), "yolo26n.engine")
     output_dir = os.path.join(os.path.dirname(__file__), "detections")
     node_id = f"{socket.gethostname()}-yolo"
 

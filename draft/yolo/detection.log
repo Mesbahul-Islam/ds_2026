@@ -1,0 +1,21 @@
+2026-02-11 21:01:14,065 - Image from jetson-motion - Send TS: 2026-02-11T21:01:13.438648 - Recv TS: 2026-02-11T21:01:13.440365 - Detect TS: 2026-02-11T21:01:14.055030 - Results: person:0.96, bed:0.34
+2026-02-11 21:01:23,592 - Image from jetson-motion - Send TS: 2026-02-11T21:01:23.525985 - Recv TS: 2026-02-11T21:01:23.528501 - Detect TS: 2026-02-11T21:01:23.580816 - Results: person:0.96
+2026-02-11 21:01:25,581 - Image from jetson-motion - Send TS: 2026-02-11T21:01:25.525939 - Recv TS: 2026-02-11T21:01:25.526871 - Detect TS: 2026-02-11T21:01:25.570974 - Results: person:0.95
+2026-02-11 21:01:39,707 - Image from jetson-motion - Send TS: 2026-02-11T21:01:39.646364 - Recv TS: 2026-02-11T21:01:39.648041 - Detect TS: 2026-02-11T21:01:39.696258 - Results: person:0.96
+2026-02-11 21:01:49,687 - Image from jetson-motion - Send TS: 2026-02-11T21:01:49.631264 - Recv TS: 2026-02-11T21:01:49.632555 - Detect TS: 2026-02-11T21:01:49.680079 - Results: person:0.97, couch:0.46
+2026-02-11 21:01:55,303 - Image from jetson-motion - Send TS: 2026-02-11T21:01:55.233168 - Recv TS: 2026-02-11T21:01:55.234883 - Detect TS: 2026-02-11T21:01:55.291247 - Results: person:0.96, couch:0.36
+2026-02-11 21:01:55,970 - Image from jetson-motion - Send TS: 2026-02-11T21:01:55.898879 - Recv TS: 2026-02-11T21:01:55.900420 - Detect TS: 2026-02-11T21:01:55.958189 - Results: person:0.96, couch:0.31
+2026-02-11 21:02:00,693 - Image from jetson-motion - Send TS: 2026-02-11T21:02:00.614879 - Recv TS: 2026-02-11T21:02:00.616580 - Detect TS: 2026-02-11T21:02:00.685639 - Results: person:0.95, couch:0.36
+2026-02-11 21:02:01,102 - Image from jetson-motion - Send TS: 2026-02-11T21:02:01.030207 - Recv TS: 2026-02-11T21:02:01.031653 - Detect TS: 2026-02-11T21:02:01.089819 - Results: person:0.96, couch:0.34
+2026-02-11 21:02:12,805 - Image from jetson-motion - Send TS: 2026-02-11T21:02:12.735637 - Recv TS: 2026-02-11T21:02:12.737484 - Detect TS: 2026-02-11T21:02:12.792558 - Results: person:0.94, bowl:0.34
+2026-02-11 21:02:14,696 - Image from jetson-motion - Send TS: 2026-02-11T21:02:14.633764 - Recv TS: 2026-02-11T21:02:14.634805 - Detect TS: 2026-02-11T21:02:14.684317 - Results: person:0.95, bowl:0.31
+2026-02-11 21:02:22,994 - Image from jetson-motion - Send TS: 2026-02-11T21:02:22.933867 - Recv TS: 2026-02-11T21:02:22.935348 - Detect TS: 2026-02-11T21:02:22.988010 - Results: person:0.95, bowl:0.30
+2026-02-11 21:02:23,310 - Image from jetson-motion - Send TS: 2026-02-11T21:02:23.238805 - Recv TS: 2026-02-11T21:02:23.240182 - Detect TS: 2026-02-11T21:02:23.298160 - Results: person:0.95, bowl:0.30
+2026-02-11 21:02:27,704 - Image from jetson-motion - Send TS: 2026-02-11T21:02:27.634484 - Recv TS: 2026-02-11T21:02:27.635743 - Detect TS: 2026-02-11T21:02:27.698067 - Results: person:0.95, bowl:0.40
+2026-02-11 21:02:31,292 - Image from jetson-motion - Send TS: 2026-02-11T21:02:31.236049 - Recv TS: 2026-02-11T21:02:31.237403 - Detect TS: 2026-02-11T21:02:31.281781 - Results: person:0.93
+2026-02-11 21:02:34,232 - Image from jetson-motion - Send TS: 2026-02-11T21:02:34.170328 - Recv TS: 2026-02-11T21:02:34.171776 - Detect TS: 2026-02-11T21:02:34.221006 - Results: person:0.95
+2026-02-11 21:02:35,281 - Image from jetson-motion - Send TS: 2026-02-11T21:02:35.220586 - Recv TS: 2026-02-11T21:02:35.222271 - Detect TS: 2026-02-11T21:02:35.270077 - Results: person:0.94
+2026-02-11 21:02:44,190 - Image from jetson-motion - Send TS: 2026-02-11T21:02:44.131600 - Recv TS: 2026-02-11T21:02:44.133098 - Detect TS: 2026-02-11T21:02:44.179212 - Results: person:0.95
+2026-02-11 21:02:47,987 - Image from jetson-motion - Send TS: 2026-02-11T21:02:47.929425 - Recv TS: 2026-02-11T21:02:47.930980 - Detect TS: 2026-02-11T21:02:47.976437 - Results: person:0.94
+2026-02-11 21:02:50,393 - Image from jetson-motion - Send TS: 2026-02-11T21:02:50.333207 - Recv TS: 2026-02-11T21:02:50.334790 - Detect TS: 2026-02-11T21:02:50.380940 - Results: person:0.84, person:0.36
+2026-02-11 21:03:00,108 - Image from jetson-motion - Send TS: 2026-02-11T21:03:00.046328 - Recv TS: 2026-02-11T21:03:00.047925 - Detect TS: 2026-02-11T21:03:00.101175 - Results: person:0.96, couch:0.40
