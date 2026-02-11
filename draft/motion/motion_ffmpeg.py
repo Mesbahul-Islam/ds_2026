@@ -21,8 +21,6 @@ from config import (
     DISCOVERY_BROADCAST,
     DISCOVERY_PORT,
     NODE_PORT,
-    DISCOVERY_INTERVAL,
-    STATUS_INTERVAL,
 )
 
 # Configure logging

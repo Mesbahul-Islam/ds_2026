@@ -5,6 +5,7 @@ import os
 import socket
 import threading
 import time
+import logging
 from datetime import datetime
 import cv2
 import numpy as np
@@ -15,7 +16,21 @@ sys.path.append('../..')
 from config import (
     DISCOVERY_BROADCAST,
     DISCOVERY_PORT,
+    NODE_PORT,
 )
+
+# Configure logging
+logging.basicConfig(
+    filename='detection.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(message)s'
+)
+# Add console handler
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
 
 def load_model(model_path):
     """Load the YOLO model from the given path."""
@@ -135,6 +150,7 @@ def subscriber_loop(context, peers_info, stop_event, model, output_dir):
                     time.sleep(0.2)
 
             if sub_socket.poll(1000):
+                recv_ts = datetime.now().isoformat()
                 message = sub_socket.recv_json()
                 if message.get("type") != "image":
                     continue
@@ -153,12 +169,25 @@ def subscriber_loop(context, peers_info, stop_event, model, output_dir):
                 image_count += 1
                 start = time.time()
                 results = run_inference(model, frame)
-                latency = time.time() - start
+                detection_ts = datetime.now().isoformat()
 
                 ts = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
                 base_name = f"{sender}_{ts}"
-                print(f"[SUB] Inference #{image_count} from {sender} in {latency:.3f}s")
+                print(f"[SUB] Inference #{image_count} from {sender}")
                 save_results(results, model, output_dir, base_name)
+
+                # Log detection results
+                detections = []
+                for result in results:
+                    for box in result.boxes:
+                        class_id = int(box.cls)
+                        confidence = float(box.conf)
+                        bbox = box.xyxy.tolist()[0]
+                        class_name = model.names[class_id]
+                        detections.append(f"{class_name}:{confidence:.2f}")
+                
+                send_ts = message.get("ts", "unknown")
+                logging.info(f"Image from {sender} - Send TS: {send_ts} - Recv TS: {recv_ts} - Detect TS: {detection_ts} - Results: {', '.join(detections) if detections else 'No detections'}")
 
         except zmq.error.ContextTerminated:
             break
@@ -173,7 +202,6 @@ if __name__ == "__main__":
     model_path = os.path.join(os.path.dirname(__file__), "yolo26n_ncnn_model")
     output_dir = os.path.join(os.path.dirname(__file__), "detections")
     node_id = f"{socket.gethostname()}-yolo"
-    motion_port = 5555
 
     model = load_model(model_path)
 
@@ -190,12 +218,12 @@ if __name__ == "__main__":
 
     discovery_thread = threading.Thread(
         target=discovery_loop,
-        args=(stop_event, peers_info, node_id, motion_port),
+        args=(stop_event, peers_info, node_id, NODE_PORT),
         daemon=True,
     )
     discovery_thread.start()
 
-    print(f"[SUB:{node_id}] Listening for images on port {motion_port}")
+    print(f"[SUB:{node_id}] Listening for images on port {NODE_PORT}")
     print(f"[SUB:{node_id}] Local IP: {get_local_ip()}\n")
 
     try:
