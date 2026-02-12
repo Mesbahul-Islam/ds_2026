@@ -3,6 +3,7 @@ draft/yolo/detections
 draft/requests/api_subscriber.log
 
 recordings/
+*.log
 
 *.pt
 *.onnx
