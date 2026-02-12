@@ -9,7 +9,7 @@ DISCOVERY_BROADCAST = "255.255.255.255"
 DISCOVERY_INTERVAL = 2  # seconds between broadcast pings
 
 # Status update interval (seconds)
-STATUS_INTERVAL = 2
+STATUS_INTERVAL = 1
     
 # Motion detection ports
 MOTION_FLAG_PORT = 5556

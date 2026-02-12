@@ -3,7 +3,7 @@ draft/yolo/detections
 draft/requests/api_subscriber.log
 
 recordings/
-*.log
+log.log
 
 *.pt
 *.onnx
@@ -218,3 +218,4 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 .DS_Store
+log.log
