@@ -481,3 +481,577 @@
 2026-02-12 18:26:19,120 - Saved result image: detection_images/Akashs-MacBook-Pro.local-motion_2026-02-12T18-26-19.118517.jpg
 2026-02-12 18:26:19,120 - Image from Akashs-MacBook-Pro.local-motion - Send TS: 18:26:19.083028 - Recv TS: 2026-02-12T18:26:19.086435 - Detect TS: 2026-02-12T18:26:19.118517 - Results: 2 detections
 2026-02-12 18:26:19,120 - Detection results published: [{'class': 'person', 'confidence': 0.91259765625}, {'class': 'oven', 'confidence': 0.5869140625}]
+2026-02-12 18:27:26,095 - Akashs-MacBook-Pro.local-motion triggered motion event at 18:27:26.092530 and published image (77.70 KB)
+2026-02-12 18:27:34,093 - Akashs-MacBook-Pro.local-motion triggered motion event at 18:27:34.091407 and published image (82.18 KB)
+2026-02-12 18:27:50,258 - User stopped motion detection with Ctrl+C.
+2026-02-12 19:09:56,559 - [FLAG_PUB:Akashs-MacBook-Pro.local-motion] Listening on tcp://*:5556
+2026-02-12 19:09:56,559 - [IMAGE_PUB:Akashs-MacBook-Pro.local-motion] Listening on tcp://*:5557
+2026-02-12 19:09:56,559 - [PUB:Akashs-MacBook-Pro.local-motion] Local IP: 130.231.169.240
+2026-02-12 19:10:01,731 - Starting motion detection... Press Ctrl+C to stop.
+2026-02-12 19:10:06,565 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:06.562561 and published image (63.13 KB)
+2026-02-12 19:10:07,555 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:07.554186 and published image (64.15 KB)
+2026-02-12 19:10:09,811 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:10:09,811 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:10:09,811 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:10:11,471 - No buffered frames to save
+2026-02-12 19:10:11,471 - Started recording on motion at 19:10:11.470258
+2026-02-12 19:10:11,472 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:11.470258 and published image (64.86 KB)
+2026-02-12 19:10:13,773 - No buffered frames to save
+2026-02-12 19:10:13,774 - Started recording on motion at 19:10:13.773022
+2026-02-12 19:10:13,775 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:13.773022 and published image (73.86 KB)
+2026-02-12 19:10:13,975 - No buffered frames to save
+2026-02-12 19:10:13,975 - Started recording on motion at 19:10:13.974245
+2026-02-12 19:10:13,977 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:13.974245 and published image (74.61 KB)
+2026-02-12 19:10:14,375 - No buffered frames to save
+2026-02-12 19:10:14,375 - Started recording on motion at 19:10:14.374366
+2026-02-12 19:10:14,377 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:14.374366 and published image (73.30 KB)
+2026-02-12 19:10:16,366 - No buffered frames to save
+2026-02-12 19:10:16,366 - Started recording on motion at 19:10:16.365677
+2026-02-12 19:10:16,367 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:16.365677 and published image (67.54 KB)
+2026-02-12 19:10:29,580 - Started recording on motion at 19:10:29.579381
+2026-02-12 19:10:29,581 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:29.579381 and published image (65.00 KB)
+2026-02-12 19:10:34,777 - Started recording on motion at 19:10:34.777302
+2026-02-12 19:10:34,778 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:34.777302 and published image (62.48 KB)
+2026-02-12 19:10:42,272 - Started recording on motion at 19:10:42.272004
+2026-02-12 19:10:42,274 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:42.272004 and published image (66.09 KB)
+2026-02-12 19:10:43,344 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:43.343252 and published image (61.60 KB)
+2026-02-12 19:10:45,781 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:45.778953 and published image (63.04 KB)
+2026-02-12 19:10:49,576 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:49.574627 and published image (61.31 KB)
+2026-02-12 19:10:50,016 - Saved recording: recordings/record_19-10-29.579381.mp4
+2026-02-12 19:10:52,971 - Saved recording: recordings/record_19-10-34.777302.mp4
+2026-02-12 19:10:55,375 - Started recording on motion at 19:10:55.374332
+2026-02-12 19:10:55,377 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:10:55.374332 and published image (66.80 KB)
+2026-02-12 19:11:01,429 - Saved recording: recordings/record_19-10-42.272004.mp4
+2026-02-12 19:11:03,581 - Started recording on motion at 19:11:03.581081
+2026-02-12 19:11:03,584 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:03.581081 and published image (67.89 KB)
+2026-02-12 19:11:11,770 - Started recording on motion at 19:11:11.770000
+2026-02-12 19:11:11,773 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:11.770000 and published image (63.56 KB)
+2026-02-12 19:11:15,854 - Saved recording: recordings/record_19-10-55.374332.mp4
+2026-02-12 19:11:20,346 - Started recording on motion at 19:11:20.346263
+2026-02-12 19:11:20,348 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:20.346263 and published image (61.78 KB)
+2026-02-12 19:11:22,548 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:22.545320 and published image (59.93 KB)
+2026-02-12 19:11:24,086 - Saved recording: recordings/record_19-11-03.581081.mp4
+2026-02-12 19:11:24,652 - Started recording on motion at 19:11:24.652054
+2026-02-12 19:11:24,654 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:24.652054 and published image (56.81 KB)
+2026-02-12 19:11:25,748 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:25.746196 and published image (57.90 KB)
+2026-02-12 19:11:32,053 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:32.051943 and published image (56.70 KB)
+2026-02-12 19:11:32,186 - Saved recording: recordings/record_19-11-11.770000.mp4
+2026-02-12 19:11:34,667 - Started recording on motion at 19:11:34.666675
+2026-02-12 19:11:34,668 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:34.666675 and published image (60.78 KB)
+2026-02-12 19:11:40,809 - Saved recording: recordings/record_19-11-20.346263.mp4
+2026-02-12 19:11:42,985 - Saved recording: recordings/record_19-11-24.652054.mp4
+2026-02-12 19:11:51,323 - Saved recording: recordings/record_19-11-34.666675.mp4
+2026-02-12 19:11:52,568 - Started recording on motion at 19:11:52.567514
+2026-02-12 19:11:52,570 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:11:52.567514 and published image (64.58 KB)
+2026-02-12 19:11:58,503 - User stopped recorder with Ctrl+C.
+2026-02-12 19:12:01,989 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:01.986408 and published image (63.49 KB)
+2026-02-12 19:12:04,297 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:04.295422 and published image (61.40 KB)
+2026-02-12 19:12:06,061 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:06.058547 and published image (59.57 KB)
+2026-02-12 19:12:09,557 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:09.554003 and published image (56.25 KB)
+2026-02-12 19:12:35,327 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:35.325381 and published image (51.62 KB)
+2026-02-12 19:12:38,630 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:12:38.627524 and published image (57.31 KB)
+2026-02-12 19:13:05,864 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:05.862340 and published image (68.52 KB)
+2026-02-12 19:13:07,766 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:07.763978 and published image (67.42 KB)
+2026-02-12 19:13:08,761 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:08.758855 and published image (65.34 KB)
+2026-02-12 19:13:22,559 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:22.556610 and published image (69.21 KB)
+2026-02-12 19:13:24,761 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:24.759427 and published image (64.04 KB)
+2026-02-12 19:13:25,363 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:25.360683 and published image (61.21 KB)
+2026-02-12 19:13:35,057 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:35.055183 and published image (67.84 KB)
+2026-02-12 19:13:48,474 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:13:48.471792 and published image (65.25 KB)
+2026-02-12 19:14:04,170 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:04.165459 and published image (61.79 KB)
+2026-02-12 19:14:10,577 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:10.574136 and published image (67.94 KB)
+2026-02-12 19:14:22,766 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:22.764282 and published image (66.13 KB)
+2026-02-12 19:14:23,783 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:23.780359 and published image (63.38 KB)
+2026-02-12 19:14:32,563 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:32.561012 and published image (69.03 KB)
+2026-02-12 19:14:33,772 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:33.770041 and published image (63.65 KB)
+2026-02-12 19:14:37,934 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:14:37,934 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:14:37,935 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:14:48,268 - Started recording on motion at 19:14:48.267101
+2026-02-12 19:14:48,269 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:48.267101 and published image (64.09 KB)
+2026-02-12 19:14:48,763 - Started recording on motion at 19:14:48.762400
+2026-02-12 19:14:48,764 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:48.762400 and published image (63.51 KB)
+2026-02-12 19:14:54,274 - Started recording on motion at 19:14:54.273174
+2026-02-12 19:14:54,275 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:14:54.273174 and published image (69.38 KB)
+2026-02-12 19:15:01,754 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:01.753515 and published image (65.54 KB)
+2026-02-12 19:15:03,281 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:03.279155 and published image (64.97 KB)
+2026-02-12 19:15:05,376 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:05.373231 and published image (64.73 KB)
+2026-02-12 19:15:08,593 - Saved recording: recordings/record_19-14-48.267101.mp4 with 135 frames
+2026-02-12 19:15:11,163 - Saved recording: recordings/record_19-14-48.762400.mp4 with 159 frames
+2026-02-12 19:15:16,178 - Started recording on motion at 19:15:16.177478
+2026-02-12 19:15:16,181 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:16.177478 and published image (68.02 KB)
+2026-02-12 19:15:18,676 - Started recording on motion at 19:15:18.675269
+2026-02-12 19:15:18,678 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:18.675269 and published image (70.40 KB)
+2026-02-12 19:15:21,168 - Saved recording: recordings/record_19-14-54.273174.mp4 with 187 frames
+2026-02-12 19:15:27,478 - Started recording on motion at 19:15:27.476286
+2026-02-12 19:15:27,480 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:27.476286 and published image (69.17 KB)
+2026-02-12 19:15:30,385 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:30.382495 and published image (68.42 KB)
+2026-02-12 19:15:32,475 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:32.472520 and published image (66.29 KB)
+2026-02-12 19:15:35,785 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:35.782975 and published image (67.44 KB)
+2026-02-12 19:15:36,267 - Saved recording: recordings/record_19-15-16.177478.mp4 with 293 frames
+2026-02-12 19:15:41,418 - Saved recording: recordings/record_19-15-18.675269.mp4 with 268 frames
+2026-02-12 19:15:41,852 - Started recording on motion at 19:15:41.851775
+2026-02-12 19:15:41,853 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:41.851775 and published image (58.25 KB)
+2026-02-12 19:15:46,207 - Saved recording: recordings/record_19-15-27.476286.mp4 with 294 frames
+2026-02-12 19:15:47,040 - Started recording on motion at 19:15:47.039971
+2026-02-12 19:15:47,042 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:47.039971 and published image (50.25 KB)
+2026-02-12 19:15:48,050 - Started recording on motion at 19:15:48.049908
+2026-02-12 19:15:48,052 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:15:48.049908 and published image (54.86 KB)
+2026-02-12 19:16:00,251 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:00.248786 and published image (49.16 KB)
+2026-02-12 19:16:01,206 - Saved recording: recordings/record_19-15-41.851775.mp4 with 293 frames
+2026-02-12 19:16:07,357 - Saved recording: recordings/record_19-15-47.039971.mp4 with 277 frames
+2026-02-12 19:16:09,520 - Saved recording: recordings/record_19-15-48.049908.mp4 with 293 frames
+2026-02-12 19:16:10,153 - Started recording on motion at 19:16:10.152467
+2026-02-12 19:16:10,156 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:10.152467 and published image (57.20 KB)
+2026-02-12 19:16:13,047 - Started recording on motion at 19:16:13.046696
+2026-02-12 19:16:13,049 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:13.046696 and published image (54.63 KB)
+2026-02-12 19:16:23,752 - Started recording on motion at 19:16:23.751678
+2026-02-12 19:16:23,753 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:23.751678 and published image (51.80 KB)
+2026-02-12 19:16:27,997 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:27.994965 and published image (63.73 KB)
+2026-02-12 19:16:30,470 - Saved recording: recordings/record_19-16-10.152467.mp4 with 259 frames
+2026-02-12 19:16:33,454 - Started recording on motion at 19:16:33.453258
+2026-02-12 19:16:33,455 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:33.453258 and published image (69.00 KB)
+2026-02-12 19:16:36,195 - Saved recording: recordings/record_19-16-13.046696.mp4 with 293 frames
+2026-02-12 19:16:37,051 - Started recording on motion at 19:16:37.050645
+2026-02-12 19:16:37,053 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:37.050645 and published image (54.09 KB)
+2026-02-12 19:16:42,898 - Saved recording: recordings/record_19-16-23.751678.mp4 with 293 frames
+2026-02-12 19:16:51,216 - Saved recording: recordings/record_19-16-33.453258.mp4 with 293 frames
+2026-02-12 19:16:51,554 - Started recording on motion at 19:16:51.554008
+2026-02-12 19:16:51,556 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:51.554008 and published image (60.84 KB)
+2026-02-12 19:16:51,852 - Started recording on motion at 19:16:51.851578
+2026-02-12 19:16:51,854 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:16:51.851578 and published image (59.92 KB)
+2026-02-12 19:16:57,987 - Saved recording: recordings/record_19-16-37.050645.mp4 with 278 frames
+2026-02-12 19:17:07,972 - Saved recording: recordings/record_19-16-51.554008.mp4 with 294 frames
+2026-02-12 19:17:12,994 - Saved recording: recordings/record_19-16-51.851578.mp4 with 267 frames
+2026-02-12 19:17:15,031 - Started recording on motion at 19:17:15.030273
+2026-02-12 19:17:15,032 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:15.030273 and published image (67.00 KB)
+2026-02-12 19:17:15,522 - Started recording on motion at 19:17:15.521791
+2026-02-12 19:17:15,524 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:15.521791 and published image (65.54 KB)
+2026-02-12 19:17:24,730 - Started recording on motion at 19:17:24.729117
+2026-02-12 19:17:24,732 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:24.729117 and published image (65.86 KB)
+2026-02-12 19:17:27,027 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:27.023998 and published image (62.49 KB)
+2026-02-12 19:17:30,428 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:30.425311 and published image (63.63 KB)
+2026-02-12 19:17:32,895 - Saved recording: recordings/record_19-17-15.030273.mp4 with 294 frames
+2026-02-12 19:17:38,048 - Saved recording: recordings/record_19-17-15.521791.mp4 with 268 frames
+2026-02-12 19:17:41,245 - Saved recording: recordings/record_19-17-24.729117.mp4 with 294 frames
+2026-02-12 19:17:42,819 - User stopped recorder with Ctrl+C.
+2026-02-12 19:17:48,830 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:17:48.828303 and published image (60.41 KB)
+2026-02-12 19:18:00,318 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:00.316578 and published image (68.89 KB)
+2026-02-12 19:18:08,131 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:08.128749 and published image (66.53 KB)
+2026-02-12 19:18:16,030 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:16.028268 and published image (61.21 KB)
+2026-02-12 19:18:22,327 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:22.324685 and published image (57.04 KB)
+2026-02-12 19:18:38,627 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:38.624910 and published image (56.23 KB)
+2026-02-12 19:18:40,229 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:40.227691 and published image (59.94 KB)
+2026-02-12 19:18:42,023 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:42.020975 and published image (57.33 KB)
+2026-02-12 19:18:45,438 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:18:45.435807 and published image (59.36 KB)
+2026-02-12 19:19:04,137 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:04.135717 and published image (66.71 KB)
+2026-02-12 19:19:07,239 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:07.237291 and published image (66.15 KB)
+2026-02-12 19:19:12,735 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:12.732030 and published image (68.34 KB)
+2026-02-12 19:19:24,539 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:24.536940 and published image (65.83 KB)
+2026-02-12 19:19:33,673 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:33.671286 and published image (71.70 KB)
+2026-02-12 19:19:34,745 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:34.743330 and published image (70.31 KB)
+2026-02-12 19:19:36,338 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:36.336214 and published image (62.78 KB)
+2026-02-12 19:19:38,647 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:38.644802 and published image (60.62 KB)
+2026-02-12 19:19:40,144 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:40.142496 and published image (61.61 KB)
+2026-02-12 19:19:41,746 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:41.744533 and published image (60.93 KB)
+2026-02-12 19:19:48,745 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:48.742740 and published image (57.68 KB)
+2026-02-12 19:19:49,046 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:49.044030 and published image (57.28 KB)
+2026-02-12 19:19:51,347 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:51.345475 and published image (57.72 KB)
+2026-02-12 19:19:54,353 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:19:54.350702 and published image (56.53 KB)
+2026-02-12 19:20:08,250 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:08.248304 and published image (60.05 KB)
+2026-02-12 19:20:09,849 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:09.847465 and published image (58.45 KB)
+2026-02-12 19:20:13,144 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:13.142101 and published image (62.81 KB)
+2026-02-12 19:20:13,743 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:13.741481 and published image (60.27 KB)
+2026-02-12 19:20:21,545 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:21.542635 and published image (61.35 KB)
+2026-02-12 19:20:23,341 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:23.339161 and published image (59.21 KB)
+2026-02-12 19:20:24,344 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:24.341351 and published image (57.75 KB)
+2026-02-12 19:20:24,855 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:24.853233 and published image (58.03 KB)
+2026-02-12 19:20:26,556 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:26.553361 and published image (55.98 KB)
+2026-02-12 19:20:28,155 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:28.152727 and published image (55.91 KB)
+2026-02-12 19:20:29,153 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:29.150467 and published image (55.98 KB)
+2026-02-12 19:20:33,851 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:20:33.848392 and published image (52.19 KB)
+2026-02-12 19:21:00,355 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:00.352547 and published image (57.75 KB)
+2026-02-12 19:21:03,058 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:03.055273 and published image (59.10 KB)
+2026-02-12 19:21:13,652 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:13.649919 and published image (57.99 KB)
+2026-02-12 19:21:25,354 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:25.351392 and published image (64.09 KB)
+2026-02-12 19:21:29,264 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:29.261718 and published image (59.73 KB)
+2026-02-12 19:21:30,449 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:30.447209 and published image (61.11 KB)
+2026-02-12 19:21:31,559 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:31.557031 and published image (59.60 KB)
+2026-02-12 19:21:32,152 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:32.149872 and published image (59.64 KB)
+2026-02-12 19:21:34,056 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:34.054493 and published image (60.04 KB)
+2026-02-12 19:21:36,655 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:36.651820 and published image (58.84 KB)
+2026-02-12 19:21:42,261 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:42.258083 and published image (55.01 KB)
+2026-02-12 19:21:46,356 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:46.354562 and published image (58.41 KB)
+2026-02-12 19:21:48,056 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:48.053433 and published image (56.01 KB)
+2026-02-12 19:21:51,756 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:51.754209 and published image (57.11 KB)
+2026-02-12 19:21:57,854 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:21:57.852419 and published image (54.93 KB)
+2026-02-12 19:22:00,455 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:00.452190 and published image (56.59 KB)
+2026-02-12 19:22:03,316 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:03.314065 and published image (56.30 KB)
+2026-02-12 19:22:07,129 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:07.126140 and published image (56.16 KB)
+2026-02-12 19:22:19,024 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:19.021592 and published image (56.18 KB)
+2026-02-12 19:22:21,928 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:21.926621 and published image (57.05 KB)
+2026-02-12 19:22:23,231 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:23.229642 and published image (56.19 KB)
+2026-02-12 19:22:25,428 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:25.425867 and published image (56.39 KB)
+2026-02-12 19:22:27,026 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:27.023802 and published image (55.46 KB)
+2026-02-12 19:22:29,132 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:29.129379 and published image (55.30 KB)
+2026-02-12 19:22:34,117 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:34.115052 and published image (57.14 KB)
+2026-02-12 19:22:35,325 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:35.323143 and published image (52.98 KB)
+2026-02-12 19:22:46,778 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:22:46,778 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:22:46,778 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:22:49,125 - No buffered frames to save
+2026-02-12 19:22:49,126 - Started recording on motion at 19:22:49.124710
+2026-02-12 19:22:49,127 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:49.124710 and published image (59.59 KB)
+2026-02-12 19:22:50,629 - No buffered frames to save
+2026-02-12 19:22:50,629 - Started recording on motion at 19:22:50.628138
+2026-02-12 19:22:50,631 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:50.628138 and published image (59.17 KB)
+2026-02-12 19:22:57,228 - No buffered frames to save
+2026-02-12 19:22:57,228 - Started recording on motion at 19:22:57.227191
+2026-02-12 19:22:57,230 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:57.227191 and published image (63.58 KB)
+2026-02-12 19:22:58,126 - No buffered frames to save
+2026-02-12 19:22:58,126 - Started recording on motion at 19:22:58.125896
+2026-02-12 19:22:58,128 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:58.125896 and published image (60.08 KB)
+2026-02-12 19:22:59,730 - Started recording on motion at 19:22:59.729449
+2026-02-12 19:22:59,732 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:22:59.729449 and published image (58.15 KB)
+2026-02-12 19:23:07,225 - Started recording on motion at 19:23:07.225180
+2026-02-12 19:23:07,226 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:07.225180 and published image (65.77 KB)
+2026-02-12 19:23:12,729 - Started recording on motion at 19:23:12.728773
+2026-02-12 19:23:12,731 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:12.728773 and published image (65.32 KB)
+2026-02-12 19:23:19,986 - Saved recording: recordings/record_19-22-59.729449.mp4 with 131 frames
+2026-02-12 19:23:23,931 - Started recording on motion at 19:23:23.930283
+2026-02-12 19:23:23,933 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:23.930283 and published image (57.76 KB)
+2026-02-12 19:23:25,336 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:25.333463 and published image (55.76 KB)
+2026-02-12 19:23:25,539 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:25.537108 and published image (56.06 KB)
+2026-02-12 19:23:27,835 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:27.832645 and published image (62.43 KB)
+2026-02-12 19:23:29,215 - Saved recording: recordings/record_19-23-07.225180.mp4 with 195 frames
+2026-02-12 19:23:31,202 - Saved recording: recordings/record_19-23-12.728773.mp4 with 278 frames
+2026-02-12 19:23:39,937 - Started recording on motion at 19:23:39.937543
+2026-02-12 19:23:39,942 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:39.937543 and published image (59.55 KB)
+2026-02-12 19:23:42,035 - Started recording on motion at 19:23:42.034925
+2026-02-12 19:23:42,039 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:42.034925 and published image (53.03 KB)
+2026-02-12 19:23:42,432 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:42.430830 and published image (54.53 KB)
+2026-02-12 19:23:47,348 - Saved recording: recordings/record_19-23-23.930283.mp4 with 264 frames
+2026-02-12 19:23:50,344 - Started recording on motion at 19:23:50.343312
+2026-02-12 19:23:50,346 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:23:50.343312 and published image (54.37 KB)
+2026-02-12 19:23:56,242 - Saved recording: recordings/record_19-23-39.937543.mp4 with 294 frames
+2026-02-12 19:24:02,434 - Saved recording: recordings/record_19-23-42.034925.mp4 with 278 frames
+2026-02-12 19:24:03,542 - Started recording on motion at 19:24:03.541523
+2026-02-12 19:24:03,543 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:03.541523 and published image (54.79 KB)
+2026-02-12 19:24:10,679 - Saved recording: recordings/record_19-23-50.343312.mp4 with 277 frames
+2026-02-12 19:24:21,283 - Saved recording: recordings/record_19-24-03.541523.mp4 with 294 frames
+2026-02-12 19:24:27,144 - Started recording on motion at 19:24:27.143197
+2026-02-12 19:24:27,146 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:27.143197 and published image (57.82 KB)
+2026-02-12 19:24:29,938 - Started recording on motion at 19:24:29.937777
+2026-02-12 19:24:29,940 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:29.937777 and published image (59.12 KB)
+2026-02-12 19:24:30,444 - Started recording on motion at 19:24:30.443679
+2026-02-12 19:24:30,446 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:30.443679 and published image (59.05 KB)
+2026-02-12 19:24:32,452 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:32.449194 and published image (55.23 KB)
+2026-02-12 19:24:40,538 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:40.535843 and published image (52.91 KB)
+2026-02-12 19:24:46,211 - Saved recording: recordings/record_19-24-27.143197.mp4 with 293 frames
+2026-02-12 19:24:48,350 - Started recording on motion at 19:24:48.349301
+2026-02-12 19:24:48,352 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:48.349301 and published image (60.22 KB)
+2026-02-12 19:24:52,853 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:24:52.849958 and published image (64.44 KB)
+2026-02-12 19:24:53,642 - Saved recording: recordings/record_19-24-29.937777.mp4 with 267 frames
+2026-02-12 19:24:54,520 - Saved recording: recordings/record_19-24-30.443679.mp4 with 293 frames
+2026-02-12 19:25:03,247 - Started recording on motion at 19:25:03.247054
+2026-02-12 19:25:03,250 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:03.247054 and published image (64.32 KB)
+2026-02-12 19:25:04,639 - Started recording on motion at 19:25:04.639196
+2026-02-12 19:25:04,641 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:04.639196 and published image (61.79 KB)
+2026-02-12 19:25:07,150 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:07.147043 and published image (56.46 KB)
+2026-02-12 19:25:09,956 - Saved recording: recordings/record_19-24-48.349301.mp4 with 274 frames
+2026-02-12 19:25:12,528 - User stopped recorder with Ctrl+C.
+2026-02-12 19:25:24,941 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:24.938324 and published image (58.43 KB)
+2026-02-12 19:25:25,847 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:25.845576 and published image (58.34 KB)
+2026-02-12 19:25:36,761 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:25:36,761 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:25:36,761 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:25:46,752 - Started recording on motion at 19:25:46.751468
+2026-02-12 19:25:46,754 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:46.751468 and published image (60.04 KB)
+2026-02-12 19:25:47,050 - Started recording on motion at 19:25:47.049577
+2026-02-12 19:25:47,052 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:25:47.049577 and published image (57.24 KB)
+2026-02-12 19:26:03,956 - Started recording on motion at 19:26:03.955174
+2026-02-12 19:26:03,957 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:03.955174 and published image (57.05 KB)
+2026-02-12 19:26:04,557 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:04.555589 and published image (57.69 KB)
+2026-02-12 19:26:05,764 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:05.761521 and published image (58.52 KB)
+2026-02-12 19:26:09,182 - Saved recording: recordings/record_19-25-46.751468.mp4 with 133 frames
+2026-02-12 19:26:09,544 - Saved recording: recordings/record_19-25-47.049577.mp4 with 154 frames
+2026-02-12 19:26:10,350 - Started recording on motion at 19:26:10.350099
+2026-02-12 19:26:10,353 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:10.350099 and published image (56.08 KB)
+2026-02-12 19:26:10,761 - Started recording on motion at 19:26:10.760928
+2026-02-12 19:26:10,763 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:10.760928 and published image (57.52 KB)
+2026-02-12 19:26:13,148 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:13.146079 and published image (55.08 KB)
+2026-02-12 19:26:13,765 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:13.762376 and published image (54.83 KB)
+2026-02-12 19:26:17,750 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:17.747757 and published image (60.79 KB)
+2026-02-12 19:26:24,333 - Saved recording: recordings/record_19-26-03.955174.mp4 with 280 frames
+2026-02-12 19:26:30,663 - Saved recording: recordings/record_19-26-10.350099.mp4 with 261 frames
+2026-02-12 19:26:30,960 - Started recording on motion at 19:26:30.959264
+2026-02-12 19:26:30,962 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:30.959264 and published image (63.54 KB)
+2026-02-12 19:26:35,151 - Started recording on motion at 19:26:35.150865
+2026-02-12 19:26:35,153 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:35.150865 and published image (62.50 KB)
+2026-02-12 19:26:36,198 - Saved recording: recordings/record_19-26-10.760928.mp4 with 294 frames
+2026-02-12 19:26:37,056 - Started recording on motion at 19:26:37.055183
+2026-02-12 19:26:37,056 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:37.055183 and published image (57.38 KB)
+2026-02-12 19:26:41,864 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:41.862644 and published image (58.84 KB)
+2026-02-12 19:26:42,962 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:42.959851 and published image (58.63 KB)
+2026-02-12 19:26:47,551 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:47.550777 and published image (59.56 KB)
+2026-02-12 19:26:50,855 - User stopped recorder with Ctrl+C.
+2026-02-12 19:26:51,428 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:51.425259 and published image (59.47 KB)
+2026-02-12 19:26:54,625 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:54.622784 and published image (57.65 KB)
+2026-02-12 19:26:56,433 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:56.430325 and published image (59.42 KB)
+2026-02-12 19:26:57,326 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:57.323925 and published image (58.87 KB)
+2026-02-12 19:26:57,729 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:57.727401 and published image (60.04 KB)
+2026-02-12 19:26:57,934 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:26:57.932284 and published image (60.05 KB)
+2026-02-12 19:27:00,327 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:00.324469 and published image (60.21 KB)
+2026-02-12 19:27:03,332 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:03.329438 and published image (59.62 KB)
+2026-02-12 19:27:08,929 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:08.927554 and published image (58.07 KB)
+2026-02-12 19:27:11,334 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:11.331892 and published image (58.86 KB)
+2026-02-12 19:27:12,828 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:12.826262 and published image (73.45 KB)
+2026-02-12 19:27:15,526 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:15.524169 and published image (77.35 KB)
+2026-02-12 19:27:16,523 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:16.521148 and published image (82.31 KB)
+2026-02-12 19:27:19,030 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:19.028294 and published image (74.85 KB)
+2026-02-12 19:27:21,034 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:21.032021 and published image (63.38 KB)
+2026-02-12 19:27:33,028 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:33.026774 and published image (68.38 KB)
+2026-02-12 19:27:35,327 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:35.325567 and published image (63.86 KB)
+2026-02-12 19:27:38,331 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:38.329386 and published image (66.50 KB)
+2026-02-12 19:27:42,735 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:42.732897 and published image (69.53 KB)
+2026-02-12 19:27:45,938 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:45.935732 and published image (68.37 KB)
+2026-02-12 19:27:51,034 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:51.032248 and published image (63.88 KB)
+2026-02-12 19:27:54,630 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:27:54.628119 and published image (67.93 KB)
+2026-02-12 19:28:00,140 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:00.137610 and published image (62.29 KB)
+2026-02-12 19:28:03,639 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:03.636296 and published image (61.82 KB)
+2026-02-12 19:28:03,830 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:03.828561 and published image (60.26 KB)
+2026-02-12 19:28:17,035 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:17.032565 and published image (62.53 KB)
+2026-02-12 19:28:23,427 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:23.424555 and published image (60.11 KB)
+2026-02-12 19:28:33,531 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:33.528862 and published image (65.06 KB)
+2026-02-12 19:28:45,446 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:28:45.442669 and published image (66.00 KB)
+2026-02-12 19:29:06,051 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:06.048840 and published image (58.86 KB)
+2026-02-12 19:29:08,538 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:08.536481 and published image (74.40 KB)
+2026-02-12 19:29:15,346 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:15.342698 and published image (70.71 KB)
+2026-02-12 19:29:15,735 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:15.733671 and published image (66.25 KB)
+2026-02-12 19:29:21,149 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:21.146375 and published image (68.81 KB)
+2026-02-12 19:29:25,048 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:25.045637 and published image (57.22 KB)
+2026-02-12 19:29:35,045 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:35.043181 and published image (61.26 KB)
+2026-02-12 19:29:36,748 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:36.745571 and published image (60.70 KB)
+2026-02-12 19:29:41,749 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:41.747383 and published image (68.02 KB)
+2026-02-12 19:29:43,148 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:43.145882 and published image (66.37 KB)
+2026-02-12 19:29:45,950 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:45.948043 and published image (69.60 KB)
+2026-02-12 19:29:47,645 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:47.642866 and published image (65.60 KB)
+2026-02-12 19:29:49,047 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:49.045464 and published image (66.07 KB)
+2026-02-12 19:29:52,552 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:52.549839 and published image (60.12 KB)
+2026-02-12 19:29:58,952 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:29:58.950796 and published image (67.73 KB)
+2026-02-12 19:30:01,239 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:01.237657 and published image (56.46 KB)
+2026-02-12 19:30:03,148 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:03.145652 and published image (55.08 KB)
+2026-02-12 19:30:05,346 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:05.343523 and published image (54.16 KB)
+2026-02-12 19:30:11,739 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:11.737410 and published image (66.17 KB)
+2026-02-12 19:30:14,464 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:14.461534 and published image (74.52 KB)
+2026-02-12 19:30:16,025 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:30:16,025 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:30:16,025 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:30:18,253 - Started recording on motion at 19:30:18.252756
+2026-02-12 19:30:18,255 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:18.252756 and published image (76.96 KB)
+2026-02-12 19:30:21,841 - Started recording on motion at 19:30:21.840681
+2026-02-12 19:30:21,843 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:21.840681 and published image (70.27 KB)
+2026-02-12 19:30:33,889 - Saved recording: recordings/record_19-30-18.252756.mp4
+2026-02-12 19:30:37,380 - Saved recording: recordings/record_19-30-21.840681.mp4
+2026-02-12 19:30:40,853 - Started recording on motion at 19:30:40.852477
+2026-02-12 19:30:40,856 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:40.852477 and published image (71.92 KB)
+2026-02-12 19:30:41,252 - Started recording on motion at 19:30:41.251786
+2026-02-12 19:30:41,254 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:41.251786 and published image (68.57 KB)
+2026-02-12 19:30:55,345 - Started recording on motion at 19:30:55.344705
+2026-02-12 19:30:55,347 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:55.344705 and published image (71.95 KB)
+2026-02-12 19:30:56,520 - Saved recording: recordings/record_19-30-40.852477.mp4
+2026-02-12 19:30:56,915 - Saved recording: recordings/record_19-30-41.251786.mp4
+2026-02-12 19:30:59,152 - Started recording on motion at 19:30:59.151487
+2026-02-12 19:30:59,154 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:30:59.151487 and published image (70.05 KB)
+2026-02-12 19:31:06,348 - Started recording on motion at 19:31:06.347575
+2026-02-12 19:31:06,350 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:06.347575 and published image (68.62 KB)
+2026-02-12 19:31:09,850 - Started recording on motion at 19:31:09.850410
+2026-02-12 19:31:09,852 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:09.850410 and published image (64.67 KB)
+2026-02-12 19:31:10,878 - Saved recording: recordings/record_19-30-55.344705.mp4
+2026-02-12 19:31:14,833 - Saved recording: recordings/record_19-30-59.151487.mp4
+2026-02-12 19:31:15,494 - User stopped recorder with Ctrl+C.
+2026-02-12 19:31:15,759 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:15.756329 and published image (63.76 KB)
+2026-02-12 19:31:16,342 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:16.340253 and published image (68.91 KB)
+2026-02-12 19:31:19,652 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:19.650316 and published image (71.53 KB)
+2026-02-12 19:31:20,360 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:20.357335 and published image (67.42 KB)
+2026-02-12 19:31:22,148 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:22.146399 and published image (69.05 KB)
+2026-02-12 19:31:23,448 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:23.445960 and published image (64.09 KB)
+2026-02-12 19:31:33,459 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:33.457377 and published image (63.65 KB)
+2026-02-12 19:31:36,064 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:36.061889 and published image (66.29 KB)
+2026-02-12 19:31:37,968 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:37.965751 and published image (60.83 KB)
+2026-02-12 19:31:40,264 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:40.261304 and published image (63.18 KB)
+2026-02-12 19:31:42,723 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:42.721029 and published image (59.35 KB)
+2026-02-12 19:31:45,324 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:45.321920 and published image (65.85 KB)
+2026-02-12 19:31:46,435 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:31:46.432861 and published image (65.47 KB)
+2026-02-12 19:32:03,119 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:03.117282 and published image (65.26 KB)
+2026-02-12 19:32:07,227 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:07.224733 and published image (65.05 KB)
+2026-02-12 19:32:09,631 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:09.629233 and published image (62.15 KB)
+2026-02-12 19:32:11,640 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:11.637682 and published image (58.84 KB)
+2026-02-12 19:32:12,828 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:12.826899 and published image (59.18 KB)
+2026-02-12 19:32:13,433 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:13.431274 and published image (63.74 KB)
+2026-02-12 19:32:14,428 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:14.426503 and published image (57.80 KB)
+2026-02-12 19:32:17,632 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:17.630376 and published image (58.00 KB)
+2026-02-12 19:32:18,632 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:18.629941 and published image (59.80 KB)
+2026-02-12 19:32:18,925 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:18.923765 and published image (56.21 KB)
+2026-02-12 19:32:21,437 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:21.434638 and published image (65.17 KB)
+2026-02-12 19:32:24,928 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:24.926082 and published image (66.75 KB)
+2026-02-12 19:32:27,335 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:27.333306 and published image (61.96 KB)
+2026-02-12 19:32:28,537 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:28.534341 and published image (62.99 KB)
+2026-02-12 19:32:29,027 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:29.025366 and published image (63.09 KB)
+2026-02-12 19:32:29,830 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:29.828564 and published image (61.73 KB)
+2026-02-12 19:32:30,628 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:30.626056 and published image (60.12 KB)
+2026-02-12 19:32:33,932 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:33.930513 and published image (61.07 KB)
+2026-02-12 19:32:36,330 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:36.328511 and published image (60.31 KB)
+2026-02-12 19:32:37,027 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:37.025243 and published image (62.08 KB)
+2026-02-12 19:32:37,538 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:37.535938 and published image (61.78 KB)
+2026-02-12 19:32:38,033 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:38.031228 and published image (63.34 KB)
+2026-02-12 19:32:41,036 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:41.033715 and published image (65.48 KB)
+2026-02-12 19:32:41,724 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:41.722426 and published image (61.56 KB)
+2026-02-12 19:32:44,230 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:44.228921 and published image (56.25 KB)
+2026-02-12 19:32:46,331 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:46.329755 and published image (54.85 KB)
+2026-02-12 19:32:50,633 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:50.630168 and published image (58.16 KB)
+2026-02-12 19:32:52,032 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:52.029884 and published image (54.50 KB)
+2026-02-12 19:32:54,537 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:54.535010 and published image (54.09 KB)
+2026-02-12 19:32:57,434 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:57.431648 and published image (58.99 KB)
+2026-02-12 19:32:58,142 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:58.139446 and published image (58.80 KB)
+2026-02-12 19:32:59,044 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:32:59.042157 and published image (56.61 KB)
+2026-02-12 19:33:00,333 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:00.330481 and published image (52.88 KB)
+2026-02-12 19:33:05,935 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:05.933366 and published image (62.76 KB)
+2026-02-12 19:33:07,043 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:07.041263 and published image (63.75 KB)
+2026-02-12 19:33:08,736 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:08.733446 and published image (54.40 KB)
+2026-02-12 19:33:09,343 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:09.340918 and published image (57.64 KB)
+2026-02-12 19:33:12,839 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:12.837175 and published image (60.40 KB)
+2026-02-12 19:33:13,245 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:13.242997 and published image (59.50 KB)
+2026-02-12 19:33:14,344 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:14.342417 and published image (60.69 KB)
+2026-02-12 19:33:16,343 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:16.340920 and published image (60.88 KB)
+2026-02-12 19:33:20,638 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:20.637057 and published image (60.09 KB)
+2026-02-12 19:33:21,739 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:21.737142 and published image (59.94 KB)
+2026-02-12 19:33:23,746 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:23.744605 and published image (64.62 KB)
+2026-02-12 19:33:25,332 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:25.330650 and published image (52.53 KB)
+2026-02-12 19:33:25,537 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:25.534558 and published image (54.36 KB)
+2026-02-12 19:33:29,744 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:29.741399 and published image (66.72 KB)
+2026-02-12 19:33:30,343 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:30.339598 and published image (66.51 KB)
+2026-02-12 19:33:31,442 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:31.441152 and published image (66.23 KB)
+2026-02-12 19:33:32,848 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:32.845513 and published image (62.50 KB)
+2026-02-12 19:33:53,431 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:53.429440 and published image (62.12 KB)
+2026-02-12 19:33:55,839 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:55.837844 and published image (61.07 KB)
+2026-02-12 19:33:59,445 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:33:59.442722 and published image (67.29 KB)
+2026-02-12 19:34:01,840 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:01.837613 and published image (68.35 KB)
+2026-02-12 19:34:07,052 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:07.049349 and published image (70.81 KB)
+2026-02-12 19:34:11,948 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:11.943828 and published image (68.56 KB)
+2026-02-12 19:34:13,745 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:13.743558 and published image (69.90 KB)
+2026-02-12 19:34:14,744 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:14.742497 and published image (67.31 KB)
+2026-02-12 19:34:15,454 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:15.450932 and published image (61.28 KB)
+2026-02-12 19:34:29,746 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:29.744067 and published image (68.10 KB)
+2026-02-12 19:34:30,452 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:30.449830 and published image (65.93 KB)
+2026-02-12 19:34:32,049 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:32.045758 and published image (66.48 KB)
+2026-02-12 19:34:37,632 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:37.630695 and published image (62.84 KB)
+2026-02-12 19:34:38,946 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:38.943482 and published image (63.85 KB)
+2026-02-12 19:34:48,729 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:48.725908 and published image (68.00 KB)
+2026-02-12 19:34:48,748 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:34:48,748 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:34:48,748 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:34:52,344 - Started recording on motion at 19:34:52.344124
+2026-02-12 19:34:52,346 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:52.344124 and published image (65.99 KB)
+2026-02-12 19:34:59,952 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:34:59.949482 and published image (67.60 KB)
+2026-02-12 19:35:02,441 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:02.439025 and published image (68.15 KB)
+2026-02-12 19:35:05,354 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:05.352326 and published image (67.90 KB)
+2026-02-12 19:35:08,005 - Saved recording: recordings/record_19-34-52.344124.mp4
+2026-02-12 19:35:09,152 - Started recording on motion at 19:35:09.150752
+2026-02-12 19:35:09,153 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:09.150752 and published image (74.29 KB)
+2026-02-12 19:35:15,252 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:15.250161 and published image (68.02 KB)
+2026-02-12 19:35:16,649 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:16.646796 and published image (68.23 KB)
+2026-02-12 19:35:18,843 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:18.841183 and published image (60.14 KB)
+2026-02-12 19:35:20,452 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:20.449323 and published image (60.15 KB)
+2026-02-12 19:35:21,446 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:21.444013 and published image (58.26 KB)
+2026-02-12 19:35:22,037 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:22.035225 and published image (55.89 KB)
+2026-02-12 19:35:24,812 - Saved recording: recordings/record_19-35-09.150752.mp4
+2026-02-12 19:35:26,850 - Started recording on motion at 19:35:26.849909
+2026-02-12 19:35:26,852 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:26.849909 and published image (60.15 KB)
+2026-02-12 19:35:29,054 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:29.051777 and published image (59.51 KB)
+2026-02-12 19:35:37,760 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:37.756812 and published image (63.64 KB)
+2026-02-12 19:35:38,758 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:38.755959 and published image (61.20 KB)
+2026-02-12 19:35:42,512 - Saved recording: recordings/record_19-35-26.849909.mp4
+2026-02-12 19:35:43,160 - Started recording on motion at 19:35:43.159943
+2026-02-12 19:35:43,162 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:43.159943 and published image (65.65 KB)
+2026-02-12 19:35:44,057 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:44.054212 and published image (64.18 KB)
+2026-02-12 19:35:46,653 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:46.650035 and published image (56.92 KB)
+2026-02-12 19:35:47,664 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:47.662028 and published image (58.02 KB)
+2026-02-12 19:35:49,551 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:49.549918 and published image (58.95 KB)
+2026-02-12 19:35:53,347 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:53.345058 and published image (58.85 KB)
+2026-02-12 19:35:55,556 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:55.553714 and published image (62.38 KB)
+2026-02-12 19:35:58,823 - Saved recording: recordings/record_19-35-43.159943.mp4
+2026-02-12 19:35:59,661 - Started recording on motion at 19:35:59.660686
+2026-02-12 19:35:59,663 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:35:59.660686 and published image (62.73 KB)
+2026-02-12 19:36:02,744 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:02.742300 and published image (69.13 KB)
+2026-02-12 19:36:04,354 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:04.352089 and published image (68.42 KB)
+2026-02-12 19:36:11,258 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:11.255689 and published image (69.21 KB)
+2026-02-12 19:36:12,056 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:12.054882 and published image (66.12 KB)
+2026-02-12 19:36:15,295 - Saved recording: recordings/record_19-35-59.660686.mp4
+2026-02-12 19:36:17,465 - Started recording on motion at 19:36:17.464664
+2026-02-12 19:36:17,468 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:17.464664 and published image (68.68 KB)
+2026-02-12 19:36:19,964 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:19.961629 and published image (69.28 KB)
+2026-02-12 19:36:20,551 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:20.549154 and published image (67.12 KB)
+2026-02-12 19:36:28,755 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:28.752112 and published image (68.35 KB)
+2026-02-12 19:36:33,093 - Saved recording: recordings/record_19-36-17.464664.mp4
+2026-02-12 19:36:37,035 - Started recording on motion at 19:36:37.034928
+2026-02-12 19:36:37,037 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:37.034928 and published image (69.72 KB)
+2026-02-12 19:36:42,828 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:42.825166 and published image (70.60 KB)
+2026-02-12 19:36:44,935 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:44.932534 and published image (70.78 KB)
+2026-02-12 19:36:45,624 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:45.622632 and published image (66.25 KB)
+2026-02-12 19:36:48,730 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:48.727542 and published image (62.72 KB)
+2026-02-12 19:36:51,123 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:51.121651 and published image (66.31 KB)
+2026-02-12 19:36:52,562 - Saved recording: recordings/record_19-36-37.034928.mp4
+2026-02-12 19:36:52,933 - Started recording on motion at 19:36:52.932368
+2026-02-12 19:36:52,934 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:52.932368 and published image (70.45 KB)
+2026-02-12 19:36:53,718 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:53.716099 and published image (69.38 KB)
+2026-02-12 19:36:57,533 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:36:57.530908 and published image (71.38 KB)
+2026-02-12 19:37:00,235 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:00.233253 and published image (69.51 KB)
+2026-02-12 19:37:03,128 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:03.126292 and published image (68.46 KB)
+2026-02-12 19:37:08,452 - Saved recording: recordings/record_19-36-52.932368.mp4
+2026-02-12 19:37:10,324 - Started recording on motion at 19:37:10.324027
+2026-02-12 19:37:10,326 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:10.324027 and published image (68.58 KB)
+2026-02-12 19:37:12,136 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:12.132576 and published image (71.19 KB)
+2026-02-12 19:37:13,341 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:13.338094 and published image (69.79 KB)
+2026-02-12 19:37:17,731 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:17.728303 and published image (64.82 KB)
+2026-02-12 19:37:20,003 - User stopped recorder with Ctrl+C.
+2026-02-12 19:37:23,729 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:23.726970 and published image (72.68 KB)
+2026-02-12 19:37:25,335 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:25.333164 and published image (68.97 KB)
+2026-02-12 19:37:26,340 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:26.337653 and published image (68.64 KB)
+2026-02-12 19:37:26,732 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:26.729435 and published image (65.26 KB)
+2026-02-12 19:37:33,553 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Listening on motion flags
+2026-02-12 19:37:33,553 - Discovery port 50000 already in use: [Errno 48] Address already in use. Skipping discovery.
+2026-02-12 19:37:33,553 - [RECORDER:Akashs-MacBook-Pro.local-recorder] Local IP: 130.231.169.240
+2026-02-12 19:37:38,530 - Started recording on motion at 19:37:38.529231
+2026-02-12 19:37:38,531 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:38.529231 and published image (67.70 KB)
+2026-02-12 19:37:45,547 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:45.544650 and published image (64.38 KB)
+2026-02-12 19:37:46,234 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:46.231367 and published image (66.28 KB)
+2026-02-12 19:37:52,031 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:52.030486 and published image (63.53 KB)
+2026-02-12 19:37:52,943 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:52.940074 and published image (65.86 KB)
+2026-02-12 19:37:53,231 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:37:53.229325 and published image (63.74 KB)
+2026-02-12 19:37:54,105 - Saved recording: recordings/record_19-37-38.529231.mp4
+2026-02-12 19:38:05,033 - Started recording on motion at 19:38:05.031851
+2026-02-12 19:38:05,035 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:05.031851 and published image (65.73 KB)
+2026-02-12 19:38:10,235 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:10.232039 and published image (60.89 KB)
+2026-02-12 19:38:13,838 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:13.834974 and published image (71.60 KB)
+2026-02-12 19:38:17,051 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:17.047378 and published image (73.85 KB)
+2026-02-12 19:38:20,143 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:20.141270 and published image (69.44 KB)
+2026-02-12 19:38:20,568 - Saved recording: recordings/record_19-38-05.031851.mp4
+2026-02-12 19:38:31,239 - Started recording on motion at 19:38:31.238238
+2026-02-12 19:38:31,240 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:31.238238 and published image (68.75 KB)
+2026-02-12 19:38:34,346 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:34.343714 and published image (67.02 KB)
+2026-02-12 19:38:41,108 - User stopped recorder with Ctrl+C.
+2026-02-12 19:38:41,142 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:41.140192 and published image (71.35 KB)
+2026-02-12 19:38:44,043 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:44.040815 and published image (66.54 KB)
+2026-02-12 19:38:46,536 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:46.534114 and published image (63.66 KB)
+2026-02-12 19:38:59,950 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:38:59.947319 and published image (71.70 KB)
+2026-02-12 19:39:17,450 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:17.448231 and published image (70.45 KB)
+2026-02-12 19:39:20,954 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:20.951713 and published image (71.39 KB)
+2026-02-12 19:39:31,944 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:31.941178 and published image (73.83 KB)
+2026-02-12 19:39:32,949 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:32.947306 and published image (70.95 KB)
+2026-02-12 19:39:50,356 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:50.352716 and published image (73.40 KB)
+2026-02-12 19:39:51,957 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:39:51.954749 and published image (69.69 KB)
+2026-02-12 19:40:13,762 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:40:13.759652 and published image (72.23 KB)
+2026-02-12 19:40:26,054 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:40:26.051885 and published image (73.71 KB)
+2026-02-12 19:40:30,152 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:40:30.150139 and published image (71.95 KB)
+2026-02-12 19:40:43,757 - Akashs-MacBook-Pro.local-motion triggered motion event at 19:40:43.754721 and published image (73.29 KB)

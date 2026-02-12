@@ -27,3 +27,7 @@ KERNEL_SIZE = 5
 
 # YOLO model path
 MODEL_PATH = "yolo26n_ncnn_model"
+
+# Recording settings
+RECORD_DURATION = 15
+RECORD_FPS = 10
