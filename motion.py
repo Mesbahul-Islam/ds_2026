@@ -17,8 +17,6 @@ from datetime import datetime
 sys.path.append('.')
 
 from config import (
-    DISCOVERY_BROADCAST,
-    DISCOVERY_PORT,
     MOTION_FLAG_PORT,
     MOTION_IMAGE_PORT,
     MOTION_URL,
@@ -27,21 +25,9 @@ from config import (
     BLUR_SIGMA,
     KERNEL_SIZE,
 )
+from utils import BaseNode
 
-# Configure logging
-logging.basicConfig(
-    filename='log.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(message)s'
-)
-# Add console handler
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(message)s')
-logging.getLogger('').addHandler(console)
-
-# Constants
-NODE_ID = f"{socket.gethostname()}-motion"
+from utils import BaseNode
 
 def get_video_dimensions(url):
     """Probe the video stream and return width and height."""
@@ -51,25 +37,16 @@ def get_video_dimensions(url):
     height = int(video_info['height'])
     return width, height
 
-class MotionDetector:
+class MotionDetector(BaseNode):
     def __init__(self):
-        self.context = zmq.Context()
+        super().__init__('motion')
+        self.pub_port = MOTION_IMAGE_PORT  # For discovery
         self.flag_pub = self.context.socket(zmq.PUB)
         self.flag_pub.bind(f"tcp://*:{MOTION_FLAG_PORT}")
         self.image_pub = self.context.socket(zmq.PUB)
         self.image_pub.bind(f"tcp://*:{MOTION_IMAGE_PORT}")
-        self.peers_info = {}
-        self.stop_event = threading.Event()
         self.prev_blurred_frame = None
         self.last_motion_state = 0
-
-    def get_local_ip(self):
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-                s.connect(("8.8.8.8", 80))
-                return s.getsockname()[0]
-        except OSError:
-            return "127.0.0.1"
 
     def gaussian_blur(self, image, kernel_size, sigma):
         return cv2.GaussianBlur(image, (kernel_size, kernel_size), sigma)
@@ -84,63 +61,10 @@ class MotionDetector:
         
         return change_ratio
 
-    def discovery_loop(self):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        sock.bind(("", DISCOVERY_PORT))
-        sock.settimeout(1.0)
-
-        while not self.stop_event.is_set():
-            try:
-                sock.sendto(
-                    json.dumps(
-                        {
-                            "type": "discover",
-                            "node_id": NODE_ID,
-                            "ip": self.get_local_ip(),
-                            "flag_port": MOTION_FLAG_PORT,
-                            "image_port": MOTION_IMAGE_PORT,
-                        }
-                    ).encode("utf-8"),
-                    (DISCOVERY_BROADCAST, DISCOVERY_PORT),
-                )
-
-                data, addr = sock.recvfrom(4096)
-                message = json.loads(data.decode("utf-8"))
-
-                if message.get("node_id") != NODE_ID and message.get("type") in {"discover", "announce"}:
-                    peer_id = message.get("node_id")
-                    if peer_id:
-                        self.peers_info[peer_id] = {
-                            "ip": message.get("ip") or addr[0],
-                            "flag_port": message.get("flag_port", MOTION_FLAG_PORT),
-                            "image_port": message.get("image_port", MOTION_IMAGE_PORT),
-                        }
-
-                        if message.get("type") == "discover":
-                            sock.sendto(
-                                json.dumps({
-                                    "type": "announce",
-                                    "node_id": NODE_ID,
-                                    "ip": self.get_local_ip(),
-                                    "flag_port": MOTION_FLAG_PORT,
-                                    "image_port": MOTION_IMAGE_PORT,
-                                }).encode("utf-8"), (addr[0], DISCOVERY_PORT)
-                            )
-            except Exception:
-                pass
-
-            if self.peers_info:
-                print(f"[Discovery:{NODE_ID}] Known peers: {list(self.peers_info.keys())}")
-            time.sleep(15 if self.peers_info else 2)
-
-        sock.close()
-
     def publish_motion_flag(self, flag, timestamp):
         self.flag_pub.send_json({
             "type": "motion_flag",
-            "node_id": NODE_ID,
+            "node_id": self.node_id,
             "flag": flag,
             "ts": timestamp,
         })
@@ -153,24 +77,23 @@ class MotionDetector:
             image_size_kb = len(image_bytes) / 1024
             message = {
                 "type": "image",
-                "node_id": NODE_ID,
+                "node_id": self.node_id,
                 "size": f"{image_size_kb:.2f} KB",
                 "image_data": image_b64,
                 "ts": timestamp,
             }
             self.image_pub.send_json(message)
-            logging.info(f"{NODE_ID} triggered motion event at {timestamp} and published image ({image_size_kb:.2f} KB)")
+            logging.info(f"{self.node_id} triggered motion event at {timestamp} and published image ({image_size_kb:.2f} KB)")
         else:
             logging.error("Failed to encode image")
 
     def run(self):
         # Start discovery thread
-        discovery_thread = threading.Thread(target=self.discovery_loop, daemon=True)
-        discovery_thread.start()
+        self.start_discovery()
 
-        logging.info(f"[FLAG_PUB:{NODE_ID}] Listening on tcp://*:{MOTION_FLAG_PORT}")
-        logging.info(f"[IMAGE_PUB:{NODE_ID}] Listening on tcp://*:{MOTION_IMAGE_PORT}")
-        logging.info(f"[PUB:{NODE_ID}] Local IP: {self.get_local_ip()}")
+        logging.info(f"[FLAG_PUB:{self.node_id}] Listening on tcp://*:{MOTION_FLAG_PORT}")
+        logging.info(f"[IMAGE_PUB:{self.node_id}] Listening on tcp://*:{MOTION_IMAGE_PORT}")
+        logging.info(f"[PUB:{self.node_id}] Local IP: {self.get_local_ip()}")
 
         width, height = get_video_dimensions(MOTION_URL)
 
@@ -221,11 +144,10 @@ class MotionDetector:
         except KeyboardInterrupt:
             logging.info("User stopped motion detection with Ctrl+C.")
         finally:
-            self.stop_event.set()
             process.terminate()
             self.flag_pub.close()
             self.image_pub.close()
-            self.context.term()
+            self.cleanup()
 
 if __name__ == "__main__":
     detector = MotionDetector()
