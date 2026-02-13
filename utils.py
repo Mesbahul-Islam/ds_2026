@@ -27,7 +27,7 @@ console.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(message)s')
 logging.getLogger('').addHandler(console)
 
-class BaseNode:
+class ZMQNode:
     def __init__(self, node_suffix):
         self.node_id = f"{socket.gethostname()}-{node_suffix}"
         self.context = zmq.Context()

@@ -16,9 +16,9 @@ from config import (
     RECORD_DURATION,
     RECORD_FPS,
 )
-from utils import BaseNode
+from utils import ZMQNode
 
-class Recorder(BaseNode):
+class Recorder(ZMQNode):
     def __init__(self):
         super().__init__('recorder')
         self.sub = self.context.socket(zmq.SUB)

@@ -21,13 +21,12 @@ from config import (
     MOTION_IMAGE_PORT,
     MOTION_URL,
     MOTION_THRESHOLD,
+    MOTION_FPS,
     PIXEL_DIFF_THRESHOLD,
     BLUR_SIGMA,
     KERNEL_SIZE,
 )
-from utils import BaseNode
-
-from utils import BaseNode
+from utils import ZMQNode
 
 def get_video_dimensions(url):
     """Probe the video stream and return width and height."""
@@ -37,7 +36,7 @@ def get_video_dimensions(url):
     height = int(video_info['height'])
     return width, height
 
-class MotionDetector(BaseNode):
+class MotionDetector(ZMQNode):
     def __init__(self):
         super().__init__('motion')
         self.pub_port = MOTION_IMAGE_PORT  # For discovery
@@ -99,7 +98,7 @@ class MotionDetector(BaseNode):
 
         process = (ffmpeg
             .input(MOTION_URL, rtsp_transport='udp')
-            .filter('fps', fps=10)  # Limit to 10 FPS for processing
+            .filter('fps', fps=MOTION_FPS)  # Limit to MOTION_FPS FPS for processing
             .output('pipe:', format='rawvideo', pix_fmt='bgr24')
             .global_args('-loglevel', 'quiet')
             .run_async(pipe_stdout=True))

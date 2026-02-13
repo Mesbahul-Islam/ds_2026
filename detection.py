@@ -20,9 +20,9 @@ from config import (
     DETECTION_PORT,
     MODEL_PATH,
 )
-from utils import BaseNode
+from utils import ZMQNode
 
-class DetectionProcessor(BaseNode):
+class DetectionProcessor(ZMQNode):
     def __init__(self, model_path):
         super().__init__('detection')
         self.pub_port = DETECTION_PORT

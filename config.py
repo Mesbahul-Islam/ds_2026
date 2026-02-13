@@ -8,8 +8,11 @@ DISCOVERY_PORT = 50000
 DISCOVERY_BROADCAST = "255.255.255.255"
 DISCOVERY_INTERVAL = 2  # seconds between broadcast pings
 
-# Status update interval (seconds)
-STATUS_INTERVAL = 1
+# System monitor update interval (seconds)
+SYSTEM_MONITOR_INTERVAL = 1
+
+# System monitor port
+SYSTEM_MONITOR_PORT = 5559
     
 # Motion detection ports
 MOTION_FLAG_PORT = 5556
@@ -24,6 +27,7 @@ MOTION_THRESHOLD = 0.33
 PIXEL_DIFF_THRESHOLD = 50
 BLUR_SIGMA = 1.5
 KERNEL_SIZE = 5
+MOTION_FPS = 10
 
 # YOLO model path
 MODEL_PATH = "yolo26n_ncnn_model"

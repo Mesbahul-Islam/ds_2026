@@ -1,27 +1,22 @@
 import psutil
 import time
-from config import STATUS_INTERVAL
+from config import SYSTEM_MONITOR_INTERVAL, SYSTEM_MONITOR_PORT
 from datetime import datetime
 import socket
 import glob
 from typing import Dict, Optional, Tuple
 import logging
+import sys
+import zmq
 
-# Configure logging
-logging.basicConfig(
-    filename='log.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(message)s'
-)
-# Add console handler
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(message)s')
-logging.getLogger('').addHandler(console)
+# Add parent directory to path to import config
+sys.path.append('.')
+
+from utils import ZMQNode
 
 def get_cpu_status():
     """Get CPU usage percentage."""
-    return psutil.cpu_percent(interval=STATUS_INTERVAL)
+    return psutil.cpu_percent(interval=SYSTEM_MONITOR_INTERVAL)
 
 def get_memory_status():
     """Get memory usage."""
@@ -133,7 +128,7 @@ def _gpu_busy_percent(prev: Tuple[int, Dict[str, int]], curr: Tuple[int, Dict[st
     return pct
 
 def get_speeds():
-    """Get disk and network I/O speeds over STATUS_INTERVAL."""
+    """Get disk and network I/O speeds over SYSTEM_MONITOR_INTERVAL."""
     # Get initial counters for speed calculations
     io1 = psutil.disk_io_counters()
     net1 = psutil.net_io_counters()
@@ -142,7 +137,7 @@ def get_speeds():
     gpu1 = _read_gpu_stats(gpu_stats_path) if gpu_stats_path else None
     
     # Sleep for interval
-    time.sleep(STATUS_INTERVAL)
+    time.sleep(SYSTEM_MONITOR_INTERVAL)
     
     # Get final counters
     io2 = psutil.disk_io_counters()
@@ -152,15 +147,15 @@ def get_speeds():
     
     # Calculate speeds
     if io1 and io2:
-        read_speed = (io2.read_bytes - io1.read_bytes) / STATUS_INTERVAL
-        write_speed = (io2.write_bytes - io1.write_bytes) / STATUS_INTERVAL
+        read_speed = (io2.read_bytes - io1.read_bytes) / SYSTEM_MONITOR_INTERVAL
+        write_speed = (io2.write_bytes - io1.write_bytes) / SYSTEM_MONITOR_INTERVAL
     else:
         read_speed = 0
         write_speed = 0
     
     if net1 and net2:
-        send_speed = (net2.bytes_sent - net1.bytes_sent) / STATUS_INTERVAL
-        recv_speed = (net2.bytes_recv - net1.bytes_recv) / STATUS_INTERVAL
+        send_speed = (net2.bytes_sent - net1.bytes_sent) / SYSTEM_MONITOR_INTERVAL
+        recv_speed = (net2.bytes_recv - net1.bytes_recv) / SYSTEM_MONITOR_INTERVAL
     else:
         send_speed = 0
         recv_speed = 0
@@ -177,31 +172,77 @@ def get_speeds():
         'gpu_usage_percent': gpu_usage_percent,
     }
 
-def log_status(speeds, cpu_usage, mem, temp, gpu):
-    """Log all system statuses."""
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    hostname = socket.gethostname()
-    message = (
-        f"[{timestamp}] Node ID: {hostname}, "
-        f"CPU: {cpu_usage}%, "
-        f"Memory: {mem['used'] / (1024**3):.2f}/{mem['total'] / (1024**3):.2f} GB ({mem['percent']}%), "
-        f"Disk R/W: {speeds['read_speed'] / 1024:.2f}/{speeds['write_speed'] / 1024:.2f} KB/s, "
-        f"Network U/D: {speeds['send_speed'] / 1024:.2f}/{speeds['recv_speed'] / 1024:.2f} KB/s, "
-        f"Temp: {temp}, "
-        f"GPU: {gpu}"
-    )
-    logging.info(message)
+class SystemMonitor(ZMQNode):
+    def __init__(self):
+        super().__init__('system_monitor')
+        self.pub_port = SYSTEM_MONITOR_PORT  # For discovery
+        self.status_pub = self.context.socket(zmq.PUB)
+        self.status_pub.bind(f"tcp://*:{SYSTEM_MONITOR_PORT}")
+
+    def publish_status(self, speeds, cpu_usage, mem, temp, gpu):
+        """Publish system status via ZeroMQ."""
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        status_data = {
+            'type': 'system_status',
+            'node_id': self.node_id,
+            'timestamp': timestamp,
+            'cpu': cpu_usage,
+            'memory_used_gb': mem['used'] / (1024**3),
+            'memory_total_gb': mem['total'] / (1024**3),
+            'memory_percent': mem['percent'],
+            'disk_read_kbs': speeds['read_speed'] / 1024,
+            'disk_write_kbs': speeds['write_speed'] / 1024,
+            'network_send_kbs': speeds['send_speed'] / 1024,
+            'network_recv_kbs': speeds['recv_speed'] / 1024,
+            'temperature': temp,
+            'gpu': gpu
+        }
+        
+        self.status_pub.send_json(status_data)
+        
+        # Also log locally
+        message = (
+            f"[{timestamp}] Node ID: {self.node_id}, "
+            f"CPU: {cpu_usage}%, "
+            f"Memory: {mem['used'] / (1024**3):.2f}/{mem['total'] / (1024**3):.2f} GB ({mem['percent']}%), "
+            f"Disk R/W: {speeds['read_speed'] / 1024:.2f}/{speeds['write_speed'] / 1024:.2f} KB/s, "
+            f"Network U/D: {speeds['send_speed'] / 1024:.2f}/{speeds['recv_speed'] / 1024:.2f} KB/s, "
+            f"Temp: {temp}, "
+            f"GPU: {gpu}"
+        )
+        logging.info(message)
+
+    def run(self):
+        # Start discovery thread
+        self.start_discovery()
+
+        logging.info(f"[STATUS_PUB:{self.node_id}] Listening on tcp://*:{SYSTEM_MONITOR_PORT}")
+        logging.info(f"[PUB:{self.node_id}] Local IP: {self.get_local_ip()}")
+
+        logging.info("Starting system monitoring... Press Ctrl+C to stop.")
+
+        try:
+            while True:
+                # Get speeds (includes sleep)
+                speeds = get_speeds()
+                
+                # Get other stats
+                cpu = psutil.cpu_percent(interval=0)
+                mem = get_memory_status()
+                temp = get_temperature_status()
+                gpu_pct = speeds.get("gpu_usage_percent")
+                gpu = f"{gpu_pct:.1f}%" if isinstance(gpu_pct, (int, float)) else "N/A"
+                
+                self.publish_status(speeds, cpu, mem, temp, gpu)
+
+        except KeyboardInterrupt:
+            logging.info("User stopped system monitoring with Ctrl+C.")
+        finally:
+            self.status_pub.close()
+            self.cleanup()
+
 
 if __name__ == "__main__":
-    while True:
-        # Get speeds
-        speeds = get_speeds()
-        
-        # Get other stats
-        cpu = psutil.cpu_percent(interval=0)  # No additional delay
-        mem = get_memory_status()
-        temp = get_temperature_status()
-        gpu_pct = speeds.get("gpu_usage_percent")
-        gpu = f"{gpu_pct:.1f}%" if isinstance(gpu_pct, (int, float)) else "N/A"
-        
-        log_status(speeds, cpu, mem, temp, gpu)
+    monitor = SystemMonitor()
+    monitor.run()
