@@ -7,5 +7,6 @@ psutil
 requests
 numpy
 flask
-
+streamlit
+plotly
 

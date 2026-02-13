@@ -181,7 +181,7 @@ class SystemMonitor(ZMQNode):
 
     def publish_status(self, speeds, cpu_usage, mem, temp, gpu):
         """Publish system status via ZeroMQ."""
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = datetime.now().isoformat()
         
         status_data = {
             'type': 'system_status',
