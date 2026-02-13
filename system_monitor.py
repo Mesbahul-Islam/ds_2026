@@ -8,11 +8,11 @@ from typing import Dict, Optional, Tuple
 import logging
 import sys
 import zmq
+from utils import ZMQNode
 
 # Add parent directory to path to import config
 sys.path.append('.')
 
-from utils import ZMQNode
 
 def get_cpu_status():
     """Get CPU usage percentage."""
@@ -181,7 +181,7 @@ class SystemMonitor(ZMQNode):
 
     def publish_status(self, speeds, cpu_usage, mem, temp, gpu):
         """Publish system status via ZeroMQ."""
-        timestamp = datetime.now().isoformat()
+        timestamp = datetime.now().time().isoformat()
         
         status_data = {
             'type': 'system_status',
@@ -203,7 +203,8 @@ class SystemMonitor(ZMQNode):
         
         # Also log locally
         message = (
-            f"[{timestamp}] Node ID: {self.node_id}, "
+            f"{timestamp},"
+            f"Node ID: {self.node_id}, "
             f"CPU: {cpu_usage}%, "
             f"Memory: {mem['used'] / (1024**3):.2f}/{mem['total'] / (1024**3):.2f} GB ({mem['percent']}%), "
             f"Disk R/W: {speeds['read_speed'] / 1024:.2f}/{speeds['write_speed'] / 1024:.2f} KB/s, "

@@ -1,8 +1,6 @@
 """
 Run with: streamlit run server.py
 
-
-
 """
 import zmq
 import threading
@@ -59,7 +57,9 @@ class DataCollector:
                 return pd.DataFrame()
             df = pd.DataFrame(list(self.data))
             if not df.empty and 'timestamp' in df.columns:
-                df['timestamp'] = pd.to_datetime(df['timestamp'])
+                df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed')
+                df['numeric_gpu'] = df['gpu'].apply(lambda x: float(x.rstrip('%')) if isinstance(x, str) and x.endswith('%') and x != 'N/A' else float('nan'))
+                df['numeric_temp'] = df['temperature'].apply(lambda x: float(x.rstrip('°C')) if isinstance(x, str) and x.endswith('°C') and 'not available' not in x.lower() else float('nan'))
             return df
             
     def get_latest(self):
@@ -84,6 +84,8 @@ def run_dashboard():
         st.rerun()
         return
 
+    st.subheader(f"Node ID: {latest.get('node_id', 'Unknown')}")
+
     # Metrics Row
     cols = st.columns(4)
     cols[0].metric("CPU", f"{latest.get('cpu', 0):.1f}%")
@@ -91,23 +93,43 @@ def run_dashboard():
     cols[2].metric("Temp", f"{latest.get('temperature', 'N/A')}")
     cols[3].metric("GPU", f"{latest.get('gpu', 'N/A')}")
 
+    st.divider()
+
+    # I/O Metrics Row
+    cols2 = st.columns(4)
+    cols2[0].metric("Disk Read", f"{latest.get('disk_read_kbs', 0):.1f} KB/s")
+    cols2[1].metric("Disk Write", f"{latest.get('disk_write_kbs', 0):.1f} KB/s")
+    cols2[2].metric("Net Recv", f"{latest.get('network_recv_kbs', 0):.1f} KB/s")
+    cols2[3].metric("Net Send", f"{latest.get('network_send_kbs', 0):.1f} KB/s")
+
     # Charts Row
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("CPU & Memory (%)")
+        st.subheader("System Metrics")
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df['timestamp'], y=df['cpu'], name='CPU %'))
-        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['memory_percent'], name='Mem %'))
-        fig.update_layout(height=300, margin=dict(l=0, r=0, t=30, b=0))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['memory_percent'], name='RAM %'))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['numeric_gpu'], name='GPU %'))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['numeric_temp'], name='Temp °C'))
+        fig.update_layout(
+            yaxis=dict(title='Usage (%) / Temp (°C)', range=[0, 100]),
+            height=300, margin=dict(l=0, r=0, t=30, b=0)
+        )
         st.plotly_chart(fig, width='stretch')
 
     with col2:
-        st.subheader("Network I/O (KB/s)")
+        st.subheader("I/O Metrics (KB/s)")
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['network_recv_kbs'], name='Download'))
-        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['network_send_kbs'], name='Upload'))
-        fig.update_layout(height=300, margin=dict(l=0, r=0, t=30, b=0))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['network_recv_kbs'], name='Net Recv'))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['network_send_kbs'], name='Net Send'))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['disk_read_kbs'], name='Disk Read', yaxis='y2'))
+        fig.add_trace(go.Scatter(x=df['timestamp'], y=df['disk_write_kbs'], name='Disk Write', yaxis='y2'))
+        fig.update_layout(
+            yaxis=dict(title='Network (KB/s)'),
+            yaxis2=dict(title='Disk (KB/s)', overlaying='y', side='right'),
+            height=300, margin=dict(l=0, r=0, t=30, b=0)
+        )
         st.plotly_chart(fig, width='stretch')
 
     # Auto-refresh loop
